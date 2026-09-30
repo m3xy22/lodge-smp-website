@@ -1,8 +1,9 @@
+```js
 (function () {
   const cfg = window.LODGE || {};
   const $ = (id) => document.getElementById(id);
 
-  const serverIp = cfg.serverIp || "the-lodge-smp-jac28qsq.pixly.gg";
+  const serverIp = cfg.serverIp || "lodgesmp.net";
   const discord = cfg.discordUrl || "#";
   const modrinth = cfg.modrinthUrl || "#";
 
@@ -15,7 +16,9 @@
   $("year").textContent = new Date().getFullYear();
 
   document.querySelectorAll("code").forEach((el) => {
-    if (el.textContent === "1.21.1 / NeoForge") el.textContent = `${cfg.minecraftVersion || "1.21.1"} / ${cfg.loader || "NeoForge"}`;
+    if (el.textContent === "1.21.1 / NeoForge") {
+      el.textContent = `${cfg.minecraftVersion || "1.21.1"} / ${cfg.loader || "NeoForge"}`;
+    }
   });
 
   function showToast(message) {
@@ -23,14 +26,18 @@
     toast.textContent = message;
     toast.classList.add("show");
     clearTimeout(window.__lodgeToast);
-    window.__lodgeToast = setTimeout(() => toast.classList.remove("show"), 1800);
+    window.__lodgeToast = setTimeout(
+      () => toast.classList.remove("show"),
+      1800
+    );
   }
 
   async function copyIp() {
-    if (!serverIp || serverIp === "the-lodge-smp-jac28qsq.pixly.gg") {
-      showToast("Add your server IP in site-config.js");
+    if (!serverIp) {
+      showToast("Server IP is not configured");
       return;
     }
+
     try {
       await navigator.clipboard.writeText(serverIp);
       showToast("Server IP copied!");
@@ -39,11 +46,14 @@
     }
   }
 
-  ["copyIp", "copyIp2", "copyIp3"].forEach((id) => $(id)?.addEventListener("click", copyIp));
+  ["copyIp", "copyIp2", "copyIp3"].forEach((id) =>
+    $(id)?.addEventListener("click", copyIp)
+  );
 
   async function loadStatus() {
     const host = cfg.statusHost || serverIp;
-    if (!host || host === "the-lodge-smp-jac28qsq.pixly.gg") {
+
+    if (!host) {
       $("serverStatus").textContent = "Set server IP";
       $("playerCount").textContent = "—";
       $("heroStatus").textContent = "OFFLINE";
@@ -52,12 +62,18 @@
     }
 
     try {
-      const res = await fetch(`https://api.mcsrvstat.us/3/${encodeURIComponent(host)}`);
+      const res = await fetch(
+        `https://api.mcsrvstat.us/3/${encodeURIComponent(host)}`
+      );
+
       if (!res.ok) throw new Error("status unavailable");
+
       const data = await res.json();
+
       if (data.online) {
         const online = data.players?.online ?? 0;
         const max = data.players?.max ?? "?";
+
         $("serverStatus").textContent = "Online";
         $("playerCount").textContent = `${online}/${max}`;
         $("heroStatus").textContent = "ONLINE";
@@ -74,15 +90,21 @@
       $("heroStatus").textContent = "—";
     }
   }
+
   loadStatus();
 
   const gallery = cfg.gallery || [];
+
   document.querySelectorAll(".gallery-card").forEach((card, i) => {
     const src = gallery[i];
-    if (src && !src.includes("lodge-0")) {
+
+    if (src) {
       card.style.backgroundImage = `url("${src}")`;
       card.classList.add("has-image");
-      card.querySelector("span").textContent = "";
+
+      const label = card.querySelector("span");
+      if (label) label.textContent = "";
     }
   });
 })();
+```
