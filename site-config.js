@@ -6,14 +6,14 @@ const LODGE = {
   name: "The Lodge SMP",
 
   // IMPORTANT: replace these placeholders with your real links/IP.
-  serverIp: "the-lodge-smp-jac28qsq.pixly.gg",
-  discordUrl: "https://discord.gg/YOUR_INVITE",
-  modrinthUrl: "https://modrinth.com/",
+  serverIp: "lodgesmp.net",
+  discordUrl: "https://discord.gg/4DtjrRRU2F",
+  modrinthUrl: "https://modrinth.com/share/2AixkXc9",
   liveMapUrl: "#",
 
   // Used by the public mcsrvstat.us API for the live player count.
   // Set this to the same address players type to join.
-  statusHost: "the-lodge-smp-jac28qsq.pixly.gg",
+  statusHost: "lodgesmp.net",
 
   minecraftVersion: "1.21.1",
   loader: "NeoForge",
