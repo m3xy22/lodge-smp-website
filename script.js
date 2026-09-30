@@ -1,4 +1,3 @@
-```js
 (function () {
   const cfg = window.LODGE || {};
   const $ = (id) => document.getElementById(id);
@@ -107,4 +106,3 @@
     }
   });
 })();
-```
