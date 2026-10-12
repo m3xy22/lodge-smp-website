@@ -6,17 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Lodge SMP</title>
   
-  <!-- Website Favicon (Browser Tab Icon) -->
   <link rel="icon" type="image/png" href="assets/gallery/logo.png">
   <link rel="apple-touch-icon" href="assets/gallery/logo.png">
 
-  <!-- Load Google Fonts (Plus Jakarta Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
 
   <style>
-    /* RESET & GLOBAL BASE STYLES */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -43,13 +40,11 @@
       padding: 24px 16px;
     }
 
-    /* Main Container */
     .site-container {
       max-width: 760px;
       margin: 0 auto;
     }
 
-    /* NAVIGATION HEADER */
     header {
       background-color: var(--card-bg);
       border-radius: 24px;
@@ -122,7 +117,6 @@
       background-color: #f8f8f8;
     }
 
-    /* HERO SECTION */
     .hero {
       margin-bottom: 32px;
     }
@@ -170,11 +164,11 @@
       margin-bottom: 28px;
     }
 
-    /* ACTION BUTTONS */
     .hero-actions {
       display: flex;
+      flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
 
     .btn-action {
@@ -211,7 +205,27 @@
       transform: translateY(-1px);
     }
 
-    /* SERVER IP & STATUS CARD */
+    /* EARLY ACCESS BUTTON */
+    .btn-early-access {
+      background-color: var(--green-accent);
+      color: #ffffff;
+      border: 1px solid var(--green-accent);
+      box-shadow: 0 5px 14px rgba(94, 132, 97, 0.18);
+    }
+
+    .btn-early-access:hover {
+      background-color: #4d7151;
+      border-color: #4d7151;
+      transform: translateY(-2px);
+    }
+
+    .early-access-note {
+      font-size: 0.76rem;
+      color: var(--text-subtle);
+      margin-top: -8px;
+      margin-bottom: 32px;
+    }
+
     .server-status-card {
       background-color: var(--card-bg);
       border-radius: 20px;
@@ -276,7 +290,6 @@
       text-transform: uppercase;
     }
 
-    /* SERVER DETAILS SECTION */
     .details-section {
       border-top: 1px solid var(--border-light);
       padding-top: 36px;
@@ -325,7 +338,6 @@
       text-decoration: underline;
     }
 
-    /* MOBILE RESPONSIVE */
     @media (max-width: 600px) {
       .main-heading {
         font-size: 2.35rem;
@@ -339,6 +351,14 @@
         max-width: 100%;
         width: 100%;
       }
+
+      .server-status-card {
+        gap: 12px;
+      }
+
+      .ip-address {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
@@ -346,7 +366,6 @@
 
   <div class="site-container">
 
-    <!-- Header Navigation -->
     <header>
       <div class="brand">
         <div class="brand-icon">
@@ -365,7 +384,6 @@
          class="btn-discord-pill">Discord</a>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
       <div class="status-badge">
         <span class="status-dot"></span>
@@ -393,9 +411,20 @@
            rel="noopener noreferrer"
            class="btn-action btn-discord">Join the Discord</a>
       </div>
+
+      <div class="hero-actions">
+        <a href="/download/"
+           class="btn-action btn-early-access"
+           style="max-width:100%; width:100%;">
+          Get Early Access to the Modpack &rarr;
+        </a>
+      </div>
+
+      <p class="early-access-note">
+        Minecraft 1.21.1 · NeoForge · Early Access Test Build
+      </p>
     </section>
 
-    <!-- Status / IP Card -->
     <div class="server-status-card">
       <div class="ip-info">
         <div class="ip-icon">
@@ -411,7 +440,6 @@
       <span class="badge-offline">Offline</span>
     </div>
 
-    <!-- Features / Details Section -->
     <section class="details-section">
       <div class="detail-group">
         <div class="section-label">Edition</div>
@@ -438,7 +466,6 @@
           Explore, build, automate, decorate, trade, and make your own place in the world. The modpack adds depth while keeping the familiar Minecraft survival loop at the center.
         </p>
 
-        <!-- Updated link: opens the separate mods page -->
         <a href="/mods/" class="link-explore">
           Explore the features &rarr;
         </a>
