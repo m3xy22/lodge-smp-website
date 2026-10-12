@@ -1,123 +1,451 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fcfbf7">
-  <meta name="description" content="Explore the featured mods and gameplay additions in The Lodge SMP's Minecraft Java modpack.">
-  <title>Explore the Modpack | The Lodge SMP</title>
-  <link rel="icon" type="image/png" href="../assets/gallery/logo.png">
-  <link rel="apple-touch-icon" href="../assets/gallery/logo.png">
+  <title>The Lodge SMP</title>
+  
+  <!-- Website Favicon (Browser Tab Icon) -->
+  <link rel="icon" type="image/png" href="assets/gallery/logo.png">
+  <link rel="apple-touch-icon" href="assets/gallery/logo.png">
+
+  <!-- Load Google Fonts (Plus Jakarta Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+
   <style>
-    :root{--bg:#fcfbf7;--card:#f4f3ed;--ink:#0f0f0f;--muted:#4a4a4a;--subtle:#737373;--green:#5e8461;--border:#e6e4dc;--font:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.55;-webkit-font-smoothing:antialiased;padding:24px 16px 48px}
-    a{color:inherit}
-    .container{max-width:760px;margin:0 auto}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px;background:var(--card);border:1px solid var(--border);border-radius:22px;margin-bottom:46px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .brand img{width:42px;height:42px;object-fit:cover;border-radius:10px}
-    .brand-name{font-size:1rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;line-height:1.15}
-    .brand-sub{font-size:.68rem;font-weight:700;letter-spacing:.12em;color:var(--subtle);text-transform:uppercase}
-    .pill{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;background:#fff;border:1px solid var(--border);border-radius:999px;padding:9px 16px;font-size:.86rem;font-weight:700;white-space:nowrap}
-    .eyebrow{font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--subtle);margin-bottom:14px}
-    h1{font-size:clamp(2.5rem,8vw,4.1rem);font-weight:800;line-height:.99;letter-spacing:-.055em;text-transform:uppercase;margin-bottom:22px}
-    h1 span{color:var(--green)}
-    .intro{font-size:1.1rem;color:var(--muted);max-width:650px;margin-bottom:24px}
-    .actions{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 44px}
-    .button{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;font-weight:800;border-radius:15px;padding:13px 18px;border:1px solid var(--border);background:var(--card)}
-    .button.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
-    .section-head{margin:42px 0 18px}
-    .section-head h2{font-size:1.5rem;letter-spacing:-.035em;font-weight:800;text-transform:uppercase;margin-bottom:6px}
-    .section-head p{color:var(--muted)}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-    .mod{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;min-height:150px;display:flex;flex-direction:column;align-items:flex-start}
-    .tag{display:inline-block;color:var(--green);font-size:.68rem;letter-spacing:.12em;font-weight:800;text-transform:uppercase;margin-bottom:10px}
-    .mod h3{font-size:1.08rem;line-height:1.2;letter-spacing:-.025em;margin-bottom:8px;font-weight:800}
-    .mod p{font-size:.91rem;color:var(--muted);line-height:1.55}
-    .note{background:#fff;border:1px solid var(--border);border-radius:16px;padding:17px 18px;color:var(--muted);font-size:.9rem;margin-top:20px}
-    .note strong{color:var(--ink)}
-    .join{margin-top:46px;background:var(--ink);color:#fff;border-radius:22px;padding:26px}
-    .join h2{font-size:1.6rem;line-height:1.1;letter-spacing:-.035em;text-transform:uppercase;margin-bottom:10px}
-    .join p{color:#d1d1d1;margin-bottom:18px}
-    .join .button{background:#fff;color:var(--ink);border-color:#fff}
-    footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:28px;padding-top:20px;border-top:1px solid var(--border);font-size:.85rem;color:var(--subtle)}
-    footer a{text-decoration:none;font-weight:700;color:var(--ink)}
-    @media(max-width:520px){body{padding:16px 12px 36px}header{margin-bottom:36px;padding:12px}.brand img{width:36px;height:36px}.pill{padding:8px 11px;font-size:.78rem}.grid{grid-template-columns:1fr}.mod{min-height:auto;padding:18px}.intro{font-size:1rem}.actions .button{width:100%}.join{padding:22px}}
+    /* RESET & GLOBAL BASE STYLES */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-color: #fcfbf7;
+      --card-bg: #f4f3ed;
+      --text-dark: #0f0f0f;
+      --text-muted: #4a4a4a;
+      --text-subtle: #737373;
+      --green-accent: #5e8461;
+      --border-light: #e6e4dc;
+      --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      font-family: var(--font-family);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 24px 16px;
+    }
+
+    /* Main Container */
+    .site-container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* NAVIGATION HEADER */
+    header {
+      background-color: var(--card-bg);
+      border-radius: 24px;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--border-light);
+      margin-bottom: 36px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-titles {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .brand-subtitle {
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .btn-discord-pill {
+      background-color: #ffffff;
+      color: var(--text-dark);
+      border: 1px solid var(--border-light);
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 8px 18px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-discord-pill:hover {
+      background-color: #f8f8f8;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      margin-bottom: 32px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 16px;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      background-color: var(--green-accent);
+      border-radius: 50%;
+    }
+
+    .main-heading {
+      font-weight: 800;
+      font-size: 3.25rem;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+
+    .main-heading span.accent {
+      color: var(--green-accent);
+      display: block;
+    }
+
+    .hero-description {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      max-width: 640px;
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    /* ACTION BUTTONS */
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .btn-action {
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 16px 24px;
+      border-radius: 18px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex: 1;
+      max-width: 220px;
+      text-align: center;
+    }
+
+    .btn-copy {
+      background-color: #ffffff;
+      color: var(--text-dark);
+      border: 1px solid var(--border-light);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .btn-discord {
+      background-color: var(--card-bg);
+      color: var(--text-dark);
+      border: 1px solid var(--border-light);
+    }
+
+    .btn-action:hover {
+      transform: translateY(-1px);
+    }
+
+    /* SERVER IP & STATUS CARD */
+    .server-status-card {
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--border-light);
+      margin-bottom: 48px;
+    }
+
+    .ip-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ip-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ip-icon-inner {
+      width: 8px;
+      height: 8px;
+      background-color: var(--text-dark);
+      border-radius: 50%;
+    }
+
+    .ip-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ip-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+    }
+
+    .ip-address {
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text-dark);
+    }
+
+    .badge-offline {
+      background-color: #f6e3e3;
+      color: #923a3a;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      padding: 6px 14px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+
+    /* SERVER DETAILS SECTION */
+    .details-section {
+      border-top: 1px solid var(--border-light);
+      padding-top: 36px;
+    }
+
+    .detail-group {
+      margin-bottom: 28px;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--text-subtle);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .detail-heading {
+      font-weight: 800;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title-large {
+      font-weight: 800;
+      font-size: 2.5rem;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .link-explore {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      margin-top: 12px;
+    }
+
+    .link-explore:hover {
+      text-decoration: underline;
+    }
+
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 600px) {
+      .main-heading {
+        font-size: 2.35rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-action {
+        max-width: 100%;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <a class="brand" href="/" aria-label="The Lodge SMP homepage">
-        <img src="../assets/gallery/logo.png" alt="The Lodge SMP logo">
-        <span><span class="brand-name">The Lodge</span><br><span class="brand-sub">SMP</span></span>
-      </a>
-      <a class="pill" href="https://discord.gg/4DtjrRRU2F" target="_blank" rel="noopener noreferrer">Join Discord ↗</a>
-    </header>
 
-    <main>
-      <p class="eyebrow">Minecraft Java · 1.21.1 · NeoForge</p>
-      <h1>Explore the<br><span>Modpack.</span></h1>
-      <p class="intro">The Lodge keeps the familiar Minecraft survival loop at the center, then adds more ways to build, explore, automate, and discover wildlife. Play your way—there's no need to master every feature to make a home here.</p>
-      <div class="actions">
-        <a class="button primary" href="https://modrinth.com/share/2AixkXc9" target="_blank" rel="noopener noreferrer">View the Modpack on Modrinth ↗</a>
-        <a class="button" href="https://discord.gg/4DtjrRRU2F" target="_blank" rel="noopener noreferrer">Get the Setup Help</a>
+  <div class="site-container">
+
+    <!-- Header Navigation -->
+    <header>
+      <div class="brand">
+        <div class="brand-icon">
+          <img src="assets/gallery/logo.png" alt="The Lodge SMP Logo">
+        </div>
+
+        <div class="brand-titles">
+          <div class="brand-title">The Lodge</div>
+          <div class="brand-subtitle">SMP</div>
+        </div>
       </div>
 
-      <section aria-labelledby="build-title">
-        <div class="section-head">
-          <p class="eyebrow">Make more of your world</p>
-          <h2 id="build-title">Build & automate</h2>
-          <p>More creative ways to build and make your base work for you.</p>
-        </div>
-        <div class="grid">
-          <article class="mod"><span class="tag">Automation</span><h3>Create</h3><p>Build moving contraptions, mechanical systems, and useful automation while keeping the process hands-on.</p></article>
-          <article class="mod"><span class="tag">Building</span><h3>Better Structures</h3><p>Discover additional structures while exploring, giving your journeys more places to investigate.</p></article>
-        </div>
-      </section>
+      <a href="https://discord.gg/4DtjrRRU2F"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn-discord-pill">Discord</a>
+    </header>
 
-      <section aria-labelledby="nature-title">
-        <div class="section-head">
-          <p class="eyebrow">A world with more life</p>
-          <h2 id="nature-title">Wildlife & exploration</h2>
-          <p>Find new reasons to wander beyond your front door.</p>
-        </div>
-        <div class="grid">
-          <article class="mod"><span class="tag">Animals</span><h3>Naturalist</h3><p>Meet more wildlife in the world, adding variety to exploration and everyday survival.</p></article>
-          <article class="mod"><span class="tag">Discovery</span><h3>Explore at your pace</h3><p>Roam, gather resources, build a home, and discover what's around you without changing the core feel of survival.</p></article>
-        </div>
-      </section>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        Modded Survival • Java
+      </div>
 
-      <section aria-labelledby="quality-title">
-        <div class="section-head">
-          <p class="eyebrow">Less hassle, more Minecraft</p>
-          <h2 id="quality-title">Quality of life</h2>
-          <p>Small improvements that make day-to-day play more comfortable.</p>
+      <h1 class="main-heading">
+        Welcome to<br>
+        <span class="accent">The Lodge</span>
+        SMP
+      </h1>
+
+      <p class="hero-description">
+        Build. Explore. Create. Settle in and make the world your own on a community-focused Minecraft survival server.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-action btn-copy"
+          onclick="navigator.clipboard.writeText('lodgesmp.net').then(() => alert('Server IP copied!')).catch(() => prompt('Copy the server IP:', 'lodgesmp.net'));">
+          Copy Server IP
+        </button>
+
+        <a href="https://discord.gg/4DtjrRRU2F"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn-action btn-discord">Join the Discord</a>
+      </div>
+    </section>
+
+    <!-- Status / IP Card -->
+    <div class="server-status-card">
+      <div class="ip-info">
+        <div class="ip-icon">
+          <div class="ip-icon-inner"></div>
         </div>
-        <div class="grid">
-          <article class="mod"><span class="tag">Recipes</span><h3>Just Enough Items (JEI)</h3><p>Check item uses and crafting recipes in-game instead of guessing or searching elsewhere.</p></article>
-          <article class="mod"><span class="tag">Navigation</span><h3>Zoom</h3><p>Get a closer look at distant builds, terrain, and points of interest.</p></article>
-          <article class="mod"><span class="tag">Mining</span><h3>Glowing Ores</h3><p>Make ore easier to spot while mining and exploring underground.</p></article>
-          <article class="mod"><span class="tag">Gathering</span><h3>Tree Capitator</h3><p>Speed up wood gathering so you can spend more time building and exploring.</p></article>
-          <article class="mod"><span class="tag">Gameplay</span><h3>Punchy</h3><p>A gameplay addition included among the pack's extra features.</p></article>
+
+        <div class="ip-details">
+          <span class="ip-label">Server IP</span>
+          <span class="ip-address">lodgesmp.net</span>
         </div>
-      </section>
+      </div>
 
-      <p class="note"><strong>Heads up:</strong> These are featured mods and highlights, not a guaranteed exhaustive file-by-file inventory. Open the Modrinth pack link above for the current pack details and use the exact pack shared by The Lodge SMP when joining.</p>
+      <span class="badge-offline">Offline</span>
+    </div>
 
-      <section class="join" aria-labelledby="join-title">
-        <p class="eyebrow" style="color:#b9cdbb">Your place in the world</p>
-        <h2 id="join-title">Ready to settle in?</h2>
-        <p>Join the community on Discord for the modpack, setup help, server updates, and everything you need to get started.</p>
-        <a class="button" href="https://discord.gg/4DtjrRRU2F" target="_blank" rel="noopener noreferrer">Join The Lodge Discord ↗</a>
-      </section>
-    </main>
+    <!-- Features / Details Section -->
+    <section class="details-section">
+      <div class="detail-group">
+        <div class="section-label">Edition</div>
+        <div class="detail-heading">Java</div>
+      </div>
 
-    <footer><a href="/">← Back to the homepage</a><span>The Lodge SMP · lodgesmp.net</span></footer>
+      <div class="detail-group">
+        <div class="section-label">Server Style</div>
+        <div class="detail-heading">Modded Survival</div>
+      </div>
+
+      <div class="detail-group" style="margin-top: 40px;">
+        <div class="section-label">The Lodge SMP</div>
+
+        <h2 class="section-title-large">
+          A survival server that still feels like Minecraft.
+        </h2>
+
+        <p class="hero-description">
+          The Lodge is built around a simple idea: add cool things without forcing every player to learn a completely different game.
+        </p>
+
+        <p class="hero-description">
+          Explore, build, automate, decorate, trade, and make your own place in the world. The modpack adds depth while keeping the familiar Minecraft survival loop at the center.
+        </p>
+
+        <!-- Updated link: opens the separate mods page -->
+        <a href="/mods/" class="link-explore">
+          Explore the features &rarr;
+        </a>
+      </div>
+    </section>
+
   </div>
+
 </body>
 </html>
