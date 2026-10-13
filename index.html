@@ -4,7 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fcfbf7">
+
   <title>The Lodge SMP</title>
+  <meta name="description" content="Build, explore, and create on The Lodge SMP, a cozy modded Minecraft survival community.">
 
   <link rel="icon" type="image/png" href="assets/gallery/logo.png">
   <link rel="apple-touch-icon" href="assets/gallery/logo.png">
@@ -32,13 +35,28 @@
         BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: var(--bg-color);
+      background-color: var(--bg-color);
       color: var(--text-dark);
       font-family: var(--font-family);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       padding: 24px 16px;
+      overflow-x: hidden;
+    }
+
+    a, button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--green-accent);
+      outline-offset: 4px;
     }
 
     .site-container {
@@ -46,8 +64,10 @@
       margin: 0 auto;
     }
 
+    /* HEADER */
+
     header {
-      background: var(--card-bg);
+      background-color: var(--card-bg);
       border-radius: 24px;
       padding: 14px 20px;
       display: flex;
@@ -55,6 +75,7 @@
       justify-content: space-between;
       border: 1px solid var(--border-light);
       margin-bottom: 36px;
+      animation: lodgeFadeDown 650ms ease-out both;
     }
 
     .brand {
@@ -68,12 +89,18 @@
       height: 42px;
       border-radius: 10px;
       overflow: hidden;
+      flex-shrink: 0;
     }
 
     .brand-icon img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 300ms ease;
+    }
+
+    .brand-icon:hover img {
+      transform: scale(1.09);
     }
 
     .brand-titles {
@@ -84,70 +111,87 @@
     .brand-title {
       font-weight: 800;
       font-size: 1.05rem;
-      letter-spacing: .04em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       line-height: 1.1;
     }
 
     .brand-subtitle {
       font-weight: 700;
-      font-size: .68rem;
-      letter-spacing: .1em;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
       color: var(--text-subtle);
       text-transform: uppercase;
       margin-top: 2px;
     }
 
     .btn-discord-pill {
-      background: #fff;
+      background-color: #fff;
       color: var(--text-dark);
       border: 1px solid var(--border-light);
       font-family: var(--font-family);
       font-weight: 700;
-      font-size: .85rem;
+      font-size: 0.85rem;
       padding: 8px 18px;
       border-radius: 30px;
       text-decoration: none;
+      transition: transform 220ms ease,
+                  box-shadow 220ms ease,
+                  background-color 220ms ease;
     }
 
     .btn-discord-pill:hover {
-      background: #f8f8f8;
+      background-color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     }
+
+    /* HERO */
 
     .hero {
       margin-bottom: 32px;
+      animation: lodgeFadeUp 750ms 100ms ease-out both;
     }
 
     .status-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: .75rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: .12em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: var(--text-dark);
       margin-bottom: 16px;
     }
 
     .status-dot {
       width: 9px;
       height: 9px;
-      background: var(--green-accent);
+      background-color: var(--green-accent);
       border-radius: 50%;
+      flex-shrink: 0;
+      animation: lodgePulse 2.8s ease-in-out infinite;
     }
 
     .main-heading {
       font-weight: 800;
       font-size: 3.25rem;
       line-height: 1.02;
-      letter-spacing: -.03em;
+      letter-spacing: -0.04em;
       text-transform: uppercase;
+      color: var(--text-dark);
       margin-bottom: 20px;
     }
 
     .main-heading span.accent {
       color: var(--green-accent);
       display: block;
+      transition: color 250ms ease;
+    }
+
+    .main-heading span.accent:hover {
+      color: #456c49;
     }
 
     .hero-description {
@@ -155,7 +199,7 @@
       font-weight: 500;
       color: var(--text-muted);
       max-width: 640px;
-      line-height: 1.5;
+      line-height: 1.65;
       margin-bottom: 28px;
     }
 
@@ -169,7 +213,7 @@
     .btn-action {
       font-family: var(--font-family);
       font-weight: 700;
-      font-size: .95rem;
+      font-size: 0.95rem;
       padding: 16px 24px;
       border-radius: 18px;
       text-decoration: none;
@@ -177,51 +221,61 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: all .2s ease;
+      transition: transform 220ms ease,
+                  box-shadow 220ms ease,
+                  background-color 220ms ease,
+                  border-color 220ms ease;
       flex: 1;
       max-width: 220px;
       text-align: center;
     }
 
     .btn-copy {
-      background: #fff;
+      background-color: #fff;
       color: var(--text-dark);
       border: 1px solid var(--border-light);
-      box-shadow: 0 4px 12px rgba(0,0,0,.03);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
 
     .btn-discord {
-      background: var(--card-bg);
+      background-color: var(--card-bg);
       color: var(--text-dark);
       border: 1px solid var(--border-light);
     }
 
     .btn-action:hover {
-      transform: translateY(-1px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(25, 35, 25, 0.09);
+    }
+
+    .btn-action:active,
+    .btn-discord-pill:active {
+      transform: translateY(0) scale(0.98);
     }
 
     .btn-early-access {
-      background: var(--green-accent);
+      background-color: var(--green-accent);
       color: #fff;
       border: 1px solid var(--green-accent);
-      box-shadow: 0 5px 14px rgba(94,132,97,.18);
+      box-shadow: 0 5px 14px rgba(94, 132, 97, 0.18);
     }
 
     .btn-early-access:hover {
-      background: #4d7151;
+      background-color: #4d7151;
       border-color: #4d7151;
-      transform: translateY(-2px);
     }
 
     .early-access-note {
-      font-size: .76rem;
+      font-size: 0.76rem;
       color: var(--text-subtle);
       margin-top: -8px;
       margin-bottom: 32px;
     }
 
+    /* SERVER STATUS */
+
     .server-status-card {
-      background: var(--card-bg);
+      background-color: var(--card-bg);
       border-radius: 20px;
       padding: 16px 20px;
       display: flex;
@@ -229,6 +283,14 @@
       justify-content: space-between;
       border: 1px solid var(--border-light);
       margin-bottom: 24px;
+      transition: transform 250ms ease,
+                  box-shadow 250ms ease;
+      animation: lodgeFadeUp 750ms 220ms ease-out both;
+    }
+
+    .server-status-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.035);
     }
 
     .ip-info {
@@ -250,7 +312,7 @@
     .ip-icon-inner {
       width: 8px;
       height: 8px;
-      background: var(--text-dark);
+      background-color: var(--text-dark);
       border-radius: 50%;
     }
 
@@ -260,9 +322,9 @@
     }
 
     .ip-label {
-      font-size: .68rem;
+      font-size: 0.68rem;
       font-weight: 800;
-      letter-spacing: .14em;
+      letter-spacing: 0.14em;
       color: var(--text-subtle);
       text-transform: uppercase;
     }
@@ -270,14 +332,15 @@
     .ip-address {
       font-weight: 800;
       font-size: 1.15rem;
+      color: var(--text-dark);
     }
 
     .badge-offline {
-      background: #f6e3e3;
+      background-color: #f6e3e3;
       color: #923a3a;
-      font-size: .7rem;
+      font-size: 0.7rem;
       font-weight: 800;
-      letter-spacing: .1em;
+      letter-spacing: 0.1em;
       padding: 6px 14px;
       border-radius: 12px;
       text-transform: uppercase;
@@ -286,18 +349,25 @@
     /* RECENT PLAYERS */
 
     .recent-players {
-      background: #180d10;
+      background-color: #180d10;
       border: 3px solid #35151f;
       border-radius: 24px;
       padding: 24px;
       margin-bottom: 48px;
       color: #f7f1e9;
+      animation: lodgeFadeUp 750ms 320ms ease-out both;
+      transition: box-shadow 250ms ease,
+                  transform 250ms ease;
+    }
+
+    .recent-players:hover {
+      box-shadow: 0 12px 28px rgba(24, 13, 16, 0.09);
     }
 
     .recent-players h2 {
       font-size: 1.35rem;
       font-weight: 800;
-      letter-spacing: .035em;
+      letter-spacing: 0.035em;
       margin-bottom: 22px;
       text-transform: uppercase;
     }
@@ -314,10 +384,13 @@
       border-radius: 22%;
       overflow: hidden;
       border: 3px solid #35151f;
-      background: #24161b;
+      background-color: #24161b;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 250ms ease,
+                  border-color 250ms ease,
+                  box-shadow 250ms ease;
     }
 
     .player-skin img {
@@ -326,20 +399,33 @@
       height: 100%;
       object-fit: cover;
       image-rendering: pixelated;
+      transition: transform 250ms ease;
+    }
+
+    .player-skin:hover {
+      transform: translateY(-4px) scale(1.035);
+      border-color: #789778;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    .player-skin:hover img {
+      transform: scale(1.04);
     }
 
     .player-placeholder {
       color: #b9a9ae;
-      font-size: .7rem;
+      font-size: 0.7rem;
       text-align: center;
       padding: 5px;
     }
 
     .player-note {
       color: #b9a9ae;
-      font-size: .76rem;
+      font-size: 0.76rem;
       margin-top: 16px;
     }
+
+    /* CONTENT SECTIONS */
 
     .details-section {
       border-top: 1px solid var(--border-light);
@@ -351,26 +437,26 @@
     }
 
     .section-label {
-      font-size: .7rem;
+      font-size: 0.7rem;
       font-weight: 800;
-      letter-spacing: .15em;
+      letter-spacing: 0.15em;
       color: var(--text-subtle);
-      margin-bottom: 4px;
       text-transform: uppercase;
+      margin-bottom: 4px;
     }
 
     .detail-heading {
       font-weight: 800;
       font-size: 1.6rem;
       text-transform: uppercase;
-      letter-spacing: -.02em;
+      letter-spacing: -0.02em;
     }
 
     .section-title-large {
       font-weight: 800;
       font-size: 2.5rem;
-      line-height: 1.08;
-      letter-spacing: -.03em;
+      line-height: 1.12;
+      letter-spacing: -0.04em;
       margin-bottom: 20px;
     }
 
@@ -383,15 +469,97 @@
       color: var(--text-dark);
       text-decoration: none;
       margin-top: 12px;
+      transition: gap 220ms ease,
+                  color 220ms ease;
     }
 
     .link-explore:hover {
-      text-decoration: underline;
+      gap: 12px;
+      color: var(--green-accent);
     }
 
+    /* SCROLL REVEALS */
+
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 650ms ease,
+                  transform 650ms ease;
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes lodgeFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes lodgeFadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes lodgePulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(94, 132, 97, 0);
+      }
+
+      50% {
+        box-shadow: 0 0 0 5px rgba(94, 132, 97, 0.13);
+      }
+    }
+
+    /* MOBILE */
+
     @media (max-width: 600px) {
+      body {
+        padding: 16px 12px;
+      }
+
+      header {
+        border-radius: 20px;
+        padding: 12px 14px;
+        margin-bottom: 30px;
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand-icon {
+        width: 38px;
+        height: 38px;
+      }
+
+      .btn-discord-pill {
+        padding: 8px 14px;
+      }
+
       .main-heading {
         font-size: 2.35rem;
+      }
+
+      .hero-description {
+        font-size: 1rem;
       }
 
       .hero-actions {
@@ -405,18 +573,30 @@
 
       .server-status-card {
         gap: 12px;
+        padding: 14px;
+      }
+
+      .ip-info {
+        gap: 10px;
       }
 
       .ip-address {
         font-size: 1rem;
       }
 
+      .badge-offline {
+        padding: 6px 10px;
+        font-size: 0.65rem;
+      }
+
       .recent-players {
         padding: 18px;
+        border-radius: 21px;
       }
 
       .recent-players h2 {
         font-size: 1.1rem;
+        margin-bottom: 18px;
       }
 
       .player-list {
@@ -426,6 +606,35 @@
       .player-skin {
         border-width: 2px;
         border-radius: 18%;
+      }
+
+      .section-title-large {
+        font-size: 2rem;
+      }
+
+      .detail-heading {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* ACCESSIBILITY */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
       }
     }
   </style>
@@ -449,7 +658,9 @@
       <a href="https://discord.gg/4DtjrRRU2F"
          target="_blank"
          rel="noopener noreferrer"
-         class="btn-discord-pill">Discord</a>
+         class="btn-discord-pill">
+        Discord
+      </a>
     </header>
 
     <section class="hero">
@@ -470,7 +681,7 @@
       </p>
 
       <div class="hero-actions">
-        <button class="btn-action btn-copy" id="copy-ip">
+        <button class="btn-action btn-copy" id="copy-ip" type="button">
           Copy Server IP
         </button>
 
@@ -511,15 +722,26 @@
     </div>
 
     <!-- RECENT PLAYERS -->
+
     <section class="recent-players">
       <h2>Recent Players</h2>
 
       <div class="player-list" id="player-list">
-        <div class="player-skin"><span class="player-placeholder">—</span></div>
-        <div class="player-skin"><span class="player-placeholder">—</span></div>
-        <div class="player-skin"><span class="player-placeholder">—</span></div>
-        <div class="player-skin"><span class="player-placeholder">—</span></div>
-        <div class="player-skin"><span class="player-placeholder">—</span></div>
+        <div class="player-skin">
+          <span class="player-placeholder">—</span>
+        </div>
+        <div class="player-skin">
+          <span class="player-placeholder">—</span>
+        </div>
+        <div class="player-skin">
+          <span class="player-placeholder">—</span>
+        </div>
+        <div class="player-skin">
+          <span class="player-placeholder">—</span>
+        </div>
+        <div class="player-skin">
+          <span class="player-placeholder">—</span>
+        </div>
       </div>
 
       <p class="player-note" id="player-note">
@@ -527,7 +749,10 @@
       </p>
     </section>
 
+    <!-- SERVER DETAILS -->
+
     <section class="details-section">
+
       <div class="detail-group">
         <div class="section-label">Edition</div>
         <div class="detail-heading">Java</div>
@@ -560,34 +785,74 @@
           Explore the features &rarr;
         </a>
       </div>
+
     </section>
 
   </div>
 
   <script>
+    // Copy the server IP.
     document.getElementById("copy-ip").addEventListener("click", async () => {
       try {
         await navigator.clipboard.writeText("lodgesmp.net");
-        alert("Server IP copied!");
+
+        const button = document.getElementById("copy-ip");
+        const originalText = button.textContent;
+
+        button.textContent = "IP Copied!";
+
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 1800);
+
       } catch {
         prompt("Copy the server IP:", "lodgesmp.net");
       }
     });
 
+    // Reveal the lower content as visitors scroll.
+    const revealElements = document.querySelectorAll(
+      ".details-section .detail-group"
+    );
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12
+      });
+
+      revealElements.forEach(element => {
+        element.classList.add("reveal-on-scroll");
+        revealObserver.observe(element);
+      });
+    } else {
+      revealElements.forEach(element => {
+        element.classList.add("is-visible");
+      });
+    }
+
     /*
-      RECENT PLAYERS DATA
+      RECENT PLAYERS INTEGRATION
 
-      The website will load /recent-players.json once we connect
-      the server's join records.
+      This section is ready to receive real server join history.
 
-      Expected format:
+      The /recent-players.json file must eventually contain data
+      in this format:
+
       {
         "players": [
-          { "uuid": "minecraft-player-uuid" }
+          { "uuid": "a-valid-minecraft-player-uuid" }
         ]
       }
 
-      UUIDs are used only to retrieve skins. They are not displayed.
+      The server must generate this data. GitHub Pages cannot
+      read your Pixly server logs directly.
     */
 
     async function loadRecentPlayers() {
@@ -600,16 +865,23 @@
         });
 
         if (!response.ok) {
-          throw new Error("Recent player data is not available yet.");
+          throw new Error("Recent player data unavailable.");
         }
 
         const data = await response.json();
+
         const players = Array.isArray(data.players)
-          ? data.players.slice(0, 5)
+          ? data.players
+              .filter(player =>
+                player &&
+                typeof player.uuid === "string" &&
+                /^[a-fA-F0-9-]{32,36}$/.test(player.uuid)
+              )
+              .slice(0, 5)
           : [];
 
         if (players.length === 0) {
-          throw new Error("No recent players have been recorded yet.");
+          throw new Error("No recent player records.");
         }
 
         list.replaceChildren();
@@ -621,22 +893,30 @@
           const img = document.createElement("img");
           img.alt = "";
           img.loading = "lazy";
+          img.decoding = "async";
           img.src =
             "https://crafatar.com/avatars/" +
             encodeURIComponent(player.uuid) +
             "?size=128&overlay";
 
           img.onerror = () => {
-            card.replaceChildren();
+            img.remove();
           };
 
           card.appendChild(img);
           list.appendChild(card);
         });
 
+        while (list.children.length < 5) {
+          const placeholder = document.createElement("div");
+          placeholder.className = "player-skin";
+          list.appendChild(placeholder);
+        }
+
         note.textContent = "The Lodge SMP community";
+
       } catch (error) {
-        // Keep the five clean placeholders until real data is connected.
+        // Leave the clean placeholders until real data is available.
         note.textContent = "The Lodge SMP community";
       }
     }
