@@ -1,1 +1,6 @@
-
+{
+  "players": [
+    { "uuid": "b5f314cc-f4af-404d-a3a7-ad1560b5eb99" },
+    { "uuid": "07c142b8-91ba-4362-a4e7-6b9c86bd3fa3" }
+  ]
+}
