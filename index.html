@@ -894,10 +894,12 @@
           img.alt = "";
           img.loading = "lazy";
           img.decoding = "async";
-          img.src =
-            "https://crafatar.com/avatars/" +
-            encodeURIComponent(player.uuid) +
-            "?size=128&overlay";
+          
+img.src =
+  "https://mc-heads.net/avatar/" +
+  encodeURIComponent(player.uuid) +
+  "/128";
+
 
           img.onerror = () => {
             img.remove();
