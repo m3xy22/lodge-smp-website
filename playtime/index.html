@@ -2,260 +2,436 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Playtime Leaderboard | The Lodge SMP</title>
-<meta name="description" content="See the most dedicated players on The Lodge SMP Minecraft server.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-:root {
-  --bg: #0b0d0f;
-  --panel: #111519;
-  --border: #292f35;
-  --text: #f4f5f6;
-  --muted: #9ca6b2;
-  --gold: #e8b923;
-}
+  <title>Playtime Leaderboard | The Lodge SMP</title>
+  <meta name="description" content="See the playtime leaderboard for The Lodge SMP Minecraft server.">
 
-* { box-sizing: border-box; }
+  <style>
+    :root {
+      --background: #0b0d0f;
+      --panel: #111519;
+      --panel-hover: #181c20;
+      --border: #292f35;
+      --text: #f4f5f6;
+      --muted: #9ca6b2;
+      --gold: #e8b923;
+      --gold-soft: rgba(232, 185, 35, 0.09);
+    }
 
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-a { color: inherit; text-decoration: none; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-header {
-  border-bottom: 1px solid #343027;
-  background: #0e1012;
-}
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+    }
 
-.nav {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.logo {
-  font-size: 21px;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
+    header {
+      background: #0e1012;
+      border-bottom: 1px solid #302b1d;
+    }
 
-.logo span { color: var(--gold); }
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 21px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
 
-nav {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-}
+    .logo {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
 
-nav a {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.3px;
-}
+    .logo span {
+      color: var(--gold);
+    }
 
-nav a:hover, nav a.active { color: var(--gold); }
+    nav {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
-main {
-  max-width: 1200px;
-  margin: auto;
-  padding: 46px 24px 60px;
-}
+    nav a {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      transition: color 0.2s;
+    }
 
-.eyebrow {
-  color: var(--gold);
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-}
+    nav a:hover,
+    nav a.active {
+      color: var(--gold);
+    }
 
-h1 {
-  font-size: clamp(30px, 5vw, 48px);
-  margin: 12px 0;
-  letter-spacing: -1.5px;
-}
+    nav a.active {
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 8px;
+    }
 
-.subtitle {
-  color: var(--muted);
-  margin: 0;
-  line-height: 1.7;
-}
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 48px 24px 64px;
+    }
 
-.heading-line {
-  width: 58px;
-  height: 3px;
-  background: var(--gold);
-  margin-bottom: 22px;
-}
+    .accent-line {
+      width: 58px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 24px;
+    }
 
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin: 30px 0;
-}
+    .eyebrow {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
 
-.stat {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 20px;
-}
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 5vw, 46px);
+      letter-spacing: -1.4px;
+      line-height: 1.1;
+    }
 
-.stat-label {
-  color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-}
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0;
+    }
 
-.stat-value {
-  display: block;
-  margin-top: 10px;
-  font-size: 26px;
-  font-weight: 800;
-}
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 34px 0 42px;
+    }
 
-.section-title {
-  font-size: 17px;
-  margin: 38px 0 16px;
-}
+    .stat-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px;
+      min-width: 0;
+    }
 
-.podium {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-  align-items: stretch;
-}
+    .stat-label {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+    }
 
-.player-card {
-  background: linear-gradient(145deg, #15191d, #0f1114);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 24px 14px;
-  text-align: center;
-}
+    .stat-value {
+      display: block;
+      font-size: 27px;
+      font-weight: 800;
+      margin-top: 12px;
+      overflow-wrap: anywhere;
+    }
 
-.player-card.first {
-  border-color: var(--gold);
-  background: linear-gradient(145deg, #211d10, #111315);
-}
+    .stat-value.gold {
+      color: var(--gold);
+    }
 
-.medal {
-  color: var(--gold);
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 18px;
+    }
 
-.player-head {
-  width: 64px;
-  height: 64px;
-  image-rendering: pixelated;
-  margin: 18px auto 12px;
-  display: block;
-}
+    .section-heading h2 {
+      margin: 0;
+      font-size: 19px;
+    }
 
-.player-name {
-  font-size: 16px;
-  font-weight: 700;
-  overflow-wrap: anywhere;
-}
+    .section-note {
+      color: var(--muted);
+      font-size: 12px;
+    }
 
-.hours {
-  color: var(--muted);
-  margin-top: 9px;
-  font-size: 14px;
-}
+    .podium {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 42px;
+    }
 
-.first .hours { color: var(--gold); }
+    .player-card {
+      background: linear-gradient(145deg, #15191d, #101215);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: #0f1215;
-}
+    .player-card.first {
+      border-color: var(--gold);
+      background: linear-gradient(145deg, #211d10, #111315);
+    }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 540px;
-}
+    .player-card.first::before {
+      content: "";
+      position: absolute;
+      height: 2px;
+      top: 0;
+      left: 20%;
+      right: 20%;
+      background: var(--gold);
+    }
 
-th {
-  text-align: left;
-  color: var(--muted);
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 18px 20px;
-  background: #14181c;
-}
+    .player-rank {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
 
-td {
-  padding: 14px 20px;
-  border-top: 1px solid var(--border);
-  font-size: 14px;
-}
+    .skin {
+      display: block;
+      width: 72px;
+      height: 72px;
+      margin: 20px auto 14px;
+      image-rendering: pixelated;
+      border-radius: 4px;
+    }
 
-tbody tr:hover { background: #171b1f; }
+    .player-name {
+      font-size: 18px;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
 
-.rank {
-  color: var(--gold);
-  font-weight: 800;
-}
+    .player-role {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 10px;
+      background: #20252a;
+      border: 1px solid #343a40;
+      border-radius: 5px;
+      color: #c5cbd2;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+    }
 
-.table-player {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 700;
-}
+    .player-card.first .player-role {
+      color: var(--gold);
+      border-color: #5d4c1b;
+      background: var(--gold-soft);
+    }
 
-.table-head {
-  width: 34px;
-  height: 34px;
-  image-rendering: pixelated;
-}
+    .player-hours {
+      color: var(--gold);
+      font-size: 25px;
+      font-weight: 800;
+      margin-top: 17px;
+    }
 
-.role { color: var(--muted); }
+    .player-hours-label {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 5px;
+    }
 
-footer {
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  text-align: center;
-  padding: 24px;
-  font-size: 12px;
-}
+    .table-wrap {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow-x: auto;
+      background: #0f1215;
+    }
 
-@media (max-width: 650px) {
-  .nav { padding: 18px; }
-  nav { gap: 14px; }
-  nav a { font-size: 10px; }
-  main { padding: 32px 16px 44px; }
-  .stats { gap: 8px; }
-  .stat { padding: 14px 10px; }
-  .stat-value { font-size: 21px; }
-  .podium { gap: 8px; }
-  .player-card { padding: 18px 7px; }
-  .player-head { width: 48px; height: 48px; }
-  .player-name { font-size: 12px; }
-  .hours { font-size: 12px; }
-}
-</style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 570px;
+    }
+
+    thead {
+      background: #14181c;
+    }
+
+    th {
+      text-align: left;
+      padding: 18px 20px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    tbody tr {
+      transition: background 0.2s;
+    }
+
+    tbody tr:hover {
+      background: var(--panel-hover);
+    }
+
+    .rank-number {
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .table-player {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+    }
+
+    .table-skin {
+      width: 36px;
+      height: 36px;
+      image-rendering: pixelated;
+      border-radius: 3px;
+    }
+
+    .table-hours {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .role-text {
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .data-note {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer a {
+      color: var(--gold);
+    }
+
+    @media (max-width: 650px) {
+      .nav {
+        padding: 18px;
+      }
+
+      nav {
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 10px;
+      }
+
+      main {
+        padding: 34px 16px 45px;
+      }
+
+      .stats {
+        gap: 8px;
+      }
+
+      .stat-card {
+        padding: 15px 11px;
+      }
+
+      .stat-value {
+        font-size: 21px;
+      }
+
+      .stat-label {
+        font-size: 9px;
+        letter-spacing: 0.8px;
+      }
+
+      .podium {
+        gap: 10px;
+      }
+
+      .player-card {
+        padding: 22px 10px;
+      }
+
+      .skin {
+        width: 56px;
+        height: 56px;
+      }
+
+      .player-name {
+        font-size: 14px;
+      }
+
+      .player-hours {
+        font-size: 21px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 7px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .logo {
+        font-size: 18px;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .player-role {
+        font-size: 10px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -263,137 +439,247 @@ footer {
 <header>
   <div class="nav">
     <a class="logo" href="/">THE LODGE <span>SMP</span></a>
-    <nav>
+
+    <nav aria-label="Main navigation">
       <a href="/">HOME</a>
       <a href="/mods/">MODS</a>
       <a href="/#gallery">GALLERY</a>
-      <a class="active" href="/playtime/">PLAYTIME</a>
-      <a href="https://discord.gg/4DtjrRRU2F" target="_blank" rel="noopener">DISCORD</a>
+      <a href="/playtime/" class="active">PLAYTIME</a>
+      <a href="https://discord.gg/4DtjrRRU2F"
+         target="_blank" rel="noopener">DISCORD</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <div class="heading-line"></div>
+  <div class="accent-line"></div>
+
   <div class="eyebrow">The Lodge SMP · Community</div>
+
   <h1>PLAYTIME LEADERBOARD</h1>
+
   <p class="subtitle">
-    Every hour counts. See who's putting in the most time at The Lodge.
+    Every hour counts. See who's putting in the time at The Lodge.
   </p>
 
-  <section class="stats">
-    <div class="stat">
+  <section class="stats" aria-label="Leaderboard summary">
+    <div class="stat-card">
       <span class="stat-label">Players Ranked</span>
-      <span class="stat-value" id="player-count">10</span>
+      <span class="stat-value" id="player-count">2</span>
     </div>
-    <div class="stat">
+
+    <div class="stat-card">
       <span class="stat-label">Top Player</span>
-      <span class="stat-value" id="top-player"
-        style="font-size:20px">twtmeep</span>
+      <span class="stat-value gold" id="top-player"
+            style="font-size:21px">m3x22</span>
     </div>
-    <div class="stat">
-      <span class="stat-label">Top Playtime</span>
-      <span class="stat-value" id="top-hours">278h</span>
+
+    <div class="stat-card">
+      <span class="stat-label">Total Playtime</span>
+      <span class="stat-value" id="total-hours">6.65h</span>
     </div>
   </section>
 
-  <h2 class="section-title">🏆 The Top Three</h2>
-  <section class="podium" id="podium"></section>
+  <section aria-labelledby="top-heading">
+    <div class="section-heading">
+      <h2 id="top-heading">Top Players</h2>
+      <span class="section-note">Ranked by total playtime</span>
+    </div>
 
-  <h2 class="section-title">Full Rankings</h2>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Player</th>
-          <th>Playtime</th>
-          <th>Rank Title</th>
-        </tr>
-      </thead>
-      <tbody id="leaderboard"></tbody>
-    </table>
-  </div>
+    <div class="podium" id="podium"></div>
+  </section>
+
+  <section aria-labelledby="rankings-heading">
+    <div class="section-heading">
+      <h2 id="rankings-heading">Full Rankings</h2>
+      <span class="section-note">The Lodge SMP</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Playtime</th>
+            <th>Server Role</th>
+          </tr>
+        </thead>
+
+        <tbody id="leaderboard"></tbody>
+      </table>
+    </div>
+
+    <p class="data-note">
+      Playtime is based on recorded Minecraft statistics.
+      Values shown here are the latest manually entered readings,
+      not a live connection to the server.
+    </p>
+  </section>
 </main>
 
 <footer>
-  THE LODGE SMP · Built for the community
+  THE LODGE SMP ·
+  <a href="https://discord.gg/4DtjrRRU2F"
+     target="_blank" rel="noopener">Join our community</a>
 </footer>
 
 <script>
-/*
-  DEMO DATA:
-  Replace these values with real server playtime data later.
-  Hours and titles are currently manually entered.
-*/
-const players = [
-  { name: "twtmeep", hours: 278, role: "Specialist" },
-  { name: "Aged_bear1891", hours: 277, role: "Specialist" },
-  { name: "FuzyLogick", hours: 258, role: "Specialist" },
-  { name: "Tischling", hours: 253, role: "Specialist" },
-  { name: "AOKNoodle", hours: 211, role: "Specialist" },
-  { name: "CaptnSlothbeard", hours: 183, role: "Partner" },
-  { name: "chainmailarmor_0", hours: 171, role: "Operator" },
-  { name: "MrJoker", hours: 155, role: "Operator" },
-  { name: "_WinterDrake_", hours: 152, role: "Operator" },
-  { name: "m3x22", hours: 146, role: "Operator" }
-];
+  /*
+    CURRENT PLAYER DATA
 
-function skinUrl(name) {
-  return "https://mc-heads.net/avatar/" +
-    encodeURIComponent(name) + "/64";
-}
+    minecraft:play_time is measured in ticks.
+    72,000 ticks = 1 hour.
 
-function formatHours(hours) {
-  return Number(hours).toLocaleString("en-US") + " Hours";
-}
+    These are the readings from your Pixly screenshots.
+    Replace them when you obtain updated server statistics.
+  */
 
-function renderLeaderboard() {
-  const sorted = [...players].sort((a, b) => b.hours - a.hours);
+  const players = [
+    {
+      name: "m3x22",
+      uuid: "07c142b8-91ba-4362-ae47-e7",
+      ticks: 333892,
+      role: "Owner"
+    },
+    {
+      name: "GriffinMylo",
+      uuid: "b5f314cc-f4af-404d-a3a7-ad1560b5eb99",
+      ticks: 144865,
+      role: "Moderator"
+    }
+  ];
 
-  document.getElementById("player-count").textContent = sorted.length;
-  document.getElementById("top-player").textContent =
-    sorted.length ? sorted[0].name : "—";
-  document.getElementById("top-hours").textContent =
-    sorted.length ? sorted[0].hours + "h" : "—";
+  function getHours(player) {
+    return player.ticks / 72000;
+  }
 
-  document.getElementById("podium").innerHTML =
-    sorted.slice(0, 3).map((player, index) => `
-      <article class="player-card ${index === 0 ? "first" : ""}">
-        <div class="medal">#${index + 1} ${
-          index === 0 ? "· LEADER" : ""
-        }</div>
-        <img class="player-head"
-          src="${skinUrl(player.name)}"
-          alt="${player.name} Minecraft skin"
-          loading="lazy">
-        <div class="player-name">${player.name}</div>
-        <div class="hours">${formatHours(player.hours)}</div>
-      </article>
-    `).join("");
+  function formatHours(player) {
+    return getHours(player).toFixed(2) + " hours";
+  }
 
-  document.getElementById("leaderboard").innerHTML =
-    sorted.map((player, index) => `
-      <tr>
-        <td class="rank">#${index + 1}</td>
-        <td>
-          <div class="table-player">
-            <img class="table-head"
-              src="${skinUrl(player.name)}"
-              alt=""
-              loading="lazy">
-            <span>${player.name}</span>
-          </div>
-        </td>
-        <td>${formatHours(player.hours)}</td>
-        <td class="role">${player.role}</td>
-      </tr>
-    `).join("");
-}
+  function skinUrl(player) {
+    /*
+      Uses Minecraft username-based avatar images.
+      The UUID field is retained for identifying each player.
+    */
+    return "https://mc-heads.net/avatar/" +
+      encodeURIComponent(player.name) + "/96";
+  }
 
-renderLeaderboard();
+  function createSkin(player, className) {
+    const img = document.createElement("img");
+    img.className = className;
+    img.src = skinUrl(player);
+    img.alt = player.name + " Minecraft skin";
+    img.loading = "lazy";
+    img.referrerPolicy = "no-referrer";
+
+    img.onerror = function () {
+      img.style.visibility = "hidden";
+    };
+
+    return img;
+  }
+
+  function renderLeaderboard() {
+    const sorted = [...players].sort(
+      (a, b) => b.ticks - a.ticks
+    );
+
+    const totalTicks = sorted.reduce(
+      (sum, player) => sum + player.ticks, 0
+    );
+
+    document.getElementById("player-count").textContent =
+      sorted.length;
+
+    document.getElementById("top-player").textContent =
+      sorted.length ? sorted[0].name : "None yet";
+
+    document.getElementById("total-hours").textContent =
+      (totalTicks / 72000).toFixed(2) + "h";
+
+    const podium = document.getElementById("podium");
+    podium.replaceChildren();
+
+    sorted.slice(0, 3).forEach((player, index) => {
+      const card = document.createElement("article");
+      card.className = "player-card" +
+        (index === 0 ? " first" : "");
+
+      const rank = document.createElement("div");
+      rank.className = "player-rank";
+      rank.textContent = index === 0
+        ? "#1 · LEADER"
+        : "#" + (index + 1);
+
+      card.appendChild(rank);
+      card.appendChild(createSkin(player, "skin"));
+
+      const name = document.createElement("div");
+      name.className = "player-name";
+      name.textContent = player.name;
+      card.appendChild(name);
+
+      const role = document.createElement("span");
+      role.className = "player-role";
+      role.textContent = player.role;
+      card.appendChild(role);
+
+      const hours = document.createElement("div");
+      hours.className = "player-hours";
+      hours.textContent = getHours(player).toFixed(2);
+
+      const label = document.createElement("div");
+      label.className = "player-hours-label";
+      label.textContent = "HOURS PLAYED";
+
+      card.appendChild(hours);
+      card.appendChild(label);
+      podium.appendChild(card);
+    });
+
+    const tbody = document.getElementById("leaderboard");
+    tbody.replaceChildren();
+
+    sorted.forEach((player, index) => {
+      const tr = document.createElement("tr");
+
+      const rankCell = document.createElement("td");
+      rankCell.className = "rank-number";
+      rankCell.textContent = "#" + (index + 1);
+      tr.appendChild(rankCell);
+
+      const playerCell = document.createElement("td");
+      const playerInfo = document.createElement("div");
+      playerInfo.className = "table-player";
+
+      playerInfo.appendChild(createSkin(player, "table-skin"));
+
+      const name = document.createElement("span");
+      name.textContent = player.name;
+
+      playerInfo.appendChild(name);
+      playerCell.appendChild(playerInfo);
+      tr.appendChild(playerCell);
+
+      const hoursCell = document.createElement("td");
+      hoursCell.className = "table-hours";
+      hoursCell.textContent = formatHours(player);
+      tr.appendChild(hoursCell);
+
+      const roleCell = document.createElement("td");
+      roleCell.className = "role-text";
+      roleCell.textContent = player.role;
+      tr.appendChild(roleCell);
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  renderLeaderboard();
 </script>
 
 </body>
 </html>
-
