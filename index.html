@@ -243,6 +243,20 @@
       border: 1px solid var(--border-light);
     }
 
+    /* PLAYTIME LEADERBOARD BUTTON */
+
+    .btn-leaderboard {
+      background-color: var(--green-accent);
+      color: #fff;
+      border: 1px solid var(--green-accent);
+      box-shadow: 0 5px 14px rgba(94, 132, 97, 0.18);
+    }
+
+    .btn-leaderboard:hover {
+      background-color: #4d7151;
+      border-color: #4d7151;
+    }
+
     .btn-action:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(25, 35, 25, 0.09);
@@ -691,6 +705,11 @@
            class="btn-action btn-discord">
           Join the Discord
         </a>
+
+        <a href="/playtime/"
+           class="btn-action btn-leaderboard">
+          🏆 Playtime Leaderboard
+        </a>
       </div>
 
       <div class="hero-actions">
@@ -840,19 +859,17 @@
     /*
       RECENT PLAYERS INTEGRATION
 
-      This section is ready to receive real server join history.
+      This section expects a /recent-players.json file
+      generated from your Minecraft server data.
 
-      The /recent-players.json file must eventually contain data
-      in this format:
-
+      Example format:
       {
         "players": [
-          { "uuid": "a-valid-minecraft-player-uuid" }
+          { "uuid": "player-uuid-here" }
         ]
       }
 
-      The server must generate this data. GitHub Pages cannot
-      read your Pixly server logs directly.
+      GitHub Pages cannot read Pixly server files directly.
     */
 
     async function loadRecentPlayers() {
@@ -891,15 +908,13 @@
           card.className = "player-skin";
 
           const img = document.createElement("img");
-          img.alt = "";
+          img.alt = "Minecraft player skin";
           img.loading = "lazy";
           img.decoding = "async";
-          
-img.src =
-  "https://mc-heads.net/avatar/" +
-  encodeURIComponent(player.uuid) +
-  "/128";
-
+          img.src =
+            "https://mc-heads.net/avatar/" +
+            encodeURIComponent(player.uuid) +
+            "/128";
 
           img.onerror = () => {
             img.remove();
@@ -918,7 +933,7 @@ img.src =
         note.textContent = "The Lodge SMP community";
 
       } catch (error) {
-        // Leave the clean placeholders until real data is available.
+        // Keep the default placeholders until player data is available.
         note.textContent = "The Lodge SMP community";
       }
     }
