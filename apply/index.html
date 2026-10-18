@@ -3,13 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Apply to Join | The Lodge SMP</title>
+
   <meta name="description" content="Apply to join The Lodge SMP, a cozy Minecraft survival community built around creativity, friendships, and adventure.">
+  <meta name="theme-color" content="#fcfbf7">
+
   <link rel="icon" type="image/png" href="/assets/gallery/logo.png">
   <link rel="apple-touch-icon" href="/assets/gallery/logo.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --background: #fcfbf7;
@@ -21,29 +27,37 @@
       --muted: #747b72;
       --border: #e7e7df;
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 100px;
     }
+
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--background);
       color: var(--text);
       line-height: 1.7;
     }
+
     a {
       color: inherit;
       text-decoration: none;
     }
+
     .container {
       width: min(1080px, 90%);
       margin: 0 auto;
     }
+
     /* NAVIGATION */
+
     header {
       background: rgba(252, 251, 247, 0.96);
       border-bottom: 1px solid var(--border);
@@ -52,6 +66,7 @@
       z-index: 100;
       backdrop-filter: blur(12px);
     }
+
     .nav {
       min-height: 76px;
       display: flex;
@@ -59,53 +74,63 @@
       align-items: center;
       gap: 20px;
     }
+
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 800;
-      letter-spacing: -0.6px;
+      letter-spacing: -0.5px;
     }
+
     .brand img {
       width: 42px;
       height: 42px;
       object-fit: contain;
       border-radius: 10px;
     }
+
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 24px;
-      font-size: 13px;
+      gap: 22px;
+      font-size: 12px;
       font-weight: 700;
     }
+
     .nav-links a:not(.nav-cta) {
       color: var(--muted);
       transition: color 0.2s;
     }
+
     .nav-links a:hover {
       color: var(--green-dark);
     }
+
     .nav-cta {
       background: var(--green);
-      color: white;
-      padding: 11px 18px;
+      color: #fff;
+      padding: 11px 17px;
       border-radius: 9px;
       transition: background 0.2s, transform 0.2s;
     }
+
     .nav-cta:hover {
       background: var(--green-dark);
       transform: translateY(-1px);
     }
+
     /* HERO */
+
     .hero {
-      padding: 76px 0 58px;
+      padding: 78px 0 65px;
       text-align: center;
       background:
-        radial-gradient(ellipse at 50% 0%, #e6eddf 0%, transparent 65%),
+        radial-gradient(ellipse at 50% 0%, #e6eddf 0%, transparent 68%),
         var(--background);
     }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -113,127 +138,159 @@
       background: #e8eee3;
       color: var(--green-dark);
       border: 1px solid #dbe5d6;
-      padding: 7px 13px;
+      padding: 7px 14px;
       border-radius: 50px;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1.3px;
-      margin-bottom: 22px;
+      letter-spacing: 1.4px;
+      margin-bottom: 23px;
     }
+
     .eyebrow-dot {
       width: 7px;
       height: 7px;
       background: var(--green);
       border-radius: 50%;
     }
+
     h1 {
-      font-size: clamp(36px, 6vw, 60px);
+      font-size: clamp(36px, 6vw, 62px);
       line-height: 1.12;
       letter-spacing: -2.5px;
       font-weight: 800;
       max-width: 760px;
-      margin: 0 auto 20px;
+      margin: 0 auto 22px;
     }
+
     h1 span {
       color: var(--green);
     }
+
     .hero-description {
       max-width: 620px;
       margin: 0 auto;
-      font-size: 15px;
+      font-size: 14px;
       color: var(--muted);
-      line-height: 1.9;
+      line-height: 1.95;
     }
+
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 12px;
-      margin-top: 28px;
+      margin-top: 29px;
     }
+
     .button {
       display: inline-flex;
       justify-content: center;
       align-items: center;
       padding: 13px 21px;
       border-radius: 10px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
       transition: 0.2s;
     }
+
     .button-primary {
       background: var(--green);
       color: white;
       box-shadow: 0 5px 15px rgba(56, 88, 64, 0.12);
     }
+
     .button-primary:hover {
       background: var(--green-dark);
       transform: translateY(-2px);
     }
+
     .button-secondary {
       border: 1px solid var(--border);
       background: white;
     }
+
     .button-secondary:hover {
       border-color: var(--green);
       color: var(--green-dark);
     }
-    /* APPLICATION INFO */
+
+    /* INFORMATION CARDS */
+
     .info-section {
-      padding: 10px 0 48px;
+      padding: 8px 0 55px;
     }
+
     .info-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
+
     .info-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 15px;
-      padding: 22px;
+      padding: 23px;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
+
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(30, 45, 30, 0.05);
+    }
+
     .info-icon {
-      width: 42px;
-      height: 42px;
+      width: 43px;
+      height: 43px;
       display: flex;
       justify-content: center;
       align-items: center;
       background: #edf2e9;
       border-radius: 11px;
       font-size: 20px;
-      margin-bottom: 14px;
+      margin-bottom: 15px;
     }
+
     .info-card h3 {
       font-size: 14px;
       font-weight: 800;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
+
     .info-card p {
       font-size: 12px;
-      line-height: 1.8;
+      line-height: 1.85;
       color: var(--muted);
     }
-    /* FORM SECTION */
+
+    /* APPLICATION FORM */
+
     .application-section {
-      padding: 12px 0 80px;
-      scroll-margin-top: 100px;
+      padding: 12px 0 85px;
     }
+
     .section-heading {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
     }
+
+    .section-heading .eyebrow {
+      margin-bottom: 14px;
+    }
+
     .section-heading h2 {
-      font-size: clamp(25px, 4vw, 36px);
+      font-size: clamp(27px, 4vw, 38px);
       letter-spacing: -1.2px;
       font-weight: 800;
       margin-bottom: 9px;
     }
+
     .section-heading p {
       color: var(--muted);
       font-size: 13px;
     }
+
     .form-wrapper {
       max-width: 850px;
       margin: 0 auto;
@@ -241,59 +298,74 @@
       border: 1px solid var(--border);
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 12px 35px rgba(30, 45, 30, 0.04);
+      box-shadow: 0 12px 35px rgba(30, 45, 30, 0.045);
     }
+
     .form-top {
-      padding: 24px 28px;
+      padding: 25px 28px;
       background: var(--soft);
       border-bottom: 1px solid var(--border);
     }
+
     .form-top h3 {
       font-size: 17px;
       font-weight: 800;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
+
     .form-top p {
       color: var(--muted);
       font-size: 12px;
     }
-    .required-note {
-      margin-top: 10px;
+
+    .form-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 12px;
       color: var(--green-dark);
       font-size: 11px;
       font-weight: 700;
     }
-    /* GOOGLE FORM EMBED */
+
+    .form-badge span {
+      width: 7px;
+      height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
     .google-form {
-      width: 100%;
-      min-height: 1200px;
       display: block;
+      width: 100%;
+      height: 1600px;
       border: 0;
       background: white;
     }
-    .form-placeholder {
-      padding: 45px 28px;
+
+    .form-bottom {
+      padding: 18px 24px;
+      border-top: 1px solid var(--border);
       text-align: center;
+      background: #fff;
     }
-    .placeholder-icon {
-      font-size: 38px;
-      margin-bottom: 12px;
-    }
-    .form-placeholder h3 {
-      font-size: 19px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .form-placeholder p {
-      font-size: 13px;
+
+    .form-bottom p {
+      font-size: 11px;
       color: var(--muted);
-      max-width: 440px;
-      margin: 0 auto 22px;
     }
-    .setup-note {
-      max-width: 650px;
-      margin: 22px auto 0;
-      padding: 18px 20px;
+
+    .form-bottom a {
+      color: var(--green-dark);
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .privacy-note {
+      max-width: 850px;
+      margin: 20px auto 0;
+      padding: 19px 21px;
       background: #edf2e9;
       border: 1px solid #dbe5d6;
       border-radius: 12px;
@@ -301,16 +373,20 @@
       line-height: 1.9;
       color: var(--green-dark);
     }
-    .setup-note strong {
+
+    .privacy-note strong {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
+
     /* FOOTER */
+
     footer {
       background: #202a22;
       color: #e7ece4;
-      padding: 35px 0;
+      padding: 36px 0 25px;
     }
+
     .footer-content {
       display: flex;
       justify-content: space-between;
@@ -318,15 +394,18 @@
       flex-wrap: wrap;
       gap: 20px;
     }
+
     .footer-brand {
       font-weight: 800;
       font-size: 15px;
     }
+
     .footer-description {
       color: #b8c4b6;
       font-size: 11px;
       margin-top: 5px;
     }
+
     .footer-links {
       display: flex;
       gap: 18px;
@@ -334,152 +413,221 @@
       font-size: 12px;
       color: #d0d9ce;
     }
+
     .footer-links a:hover {
       color: white;
     }
+
     .copyright {
       color: #9eac9d;
       font-size: 10px;
-      margin-top: 22px;
+      margin-top: 23px;
       padding-top: 18px;
       border-top: 1px solid #39443a;
     }
+
     /* MOBILE */
+
     @media (max-width: 700px) {
+      .container {
+        width: 92%;
+      }
+
       .nav {
         min-height: 68px;
+        gap: 10px;
       }
+
       .brand {
-        font-size: 14px;
-        gap: 8px;
+        font-size: 12px;
+        gap: 7px;
       }
+
       .brand img {
-        width: 35px;
-        height: 35px;
+        width: 34px;
+        height: 34px;
       }
+
       .nav-links {
-        gap: 12px;
-        font-size: 11px;
+        gap: 10px;
+        font-size: 10px;
       }
+
       .nav-links .hide-mobile {
         display: none;
       }
+
       .nav-cta {
-        padding: 9px 12px;
+        padding: 10px 12px;
       }
+
       .hero {
-        padding: 55px 0 43px;
+        padding: 57px 0 45px;
       }
+
       h1 {
         letter-spacing: -1.5px;
       }
+
       .hero-description {
-        font-size: 13px;
+        font-size: 12px;
       }
+
       .info-grid {
         grid-template-columns: 1fr;
         gap: 10px;
       }
+
       .info-card {
         padding: 18px;
         display: flex;
         gap: 14px;
         align-items: flex-start;
       }
+
       .info-icon {
         flex-shrink: 0;
         margin-bottom: 0;
       }
+
       .form-top {
         padding: 21px 18px;
       }
+
       .google-form {
-        min-height: 1450px;
+        height: 1750px;
       }
-      .form-placeholder {
-        padding: 35px 20px;
+
+      .application-section {
+        padding-bottom: 55px;
       }
+
       .footer-content {
         flex-direction: column;
         align-items: flex-start;
       }
-      .application-section {
-        padding-bottom: 55px;
+
+      .footer-links {
+        gap: 14px;
       }
     }
+
+    @media (max-width: 380px) {
+      .brand {
+        font-size: 10px;
+      }
+
+      .nav-links {
+        font-size: 9px;
+      }
+
+      .nav-cta {
+        padding: 9px 10px;
+      }
+
+      .hero-buttons .button {
+        width: 100%;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
       }
-      * {
+
+      *,
+      *::before,
+      *::after {
         transition: none !important;
       }
     }
   </style>
 </head>
+
 <body>
+
   <!-- NAVIGATION -->
   <header>
     <div class="container nav">
-      <a class="brand" href="/">
+
+      <a class="brand" href="/" aria-label="The Lodge SMP homepage">
         <img src="/assets/gallery/logo.png" alt="The Lodge SMP logo">
         <span>THE LODGE SMP</span>
       </a>
-      <nav class="nav-links">
+
+      <nav class="nav-links" aria-label="Main navigation">
         <a href="/" class="hide-mobile">Home</a>
         <a href="/mods/" class="hide-mobile">Modpack</a>
-        <a href="https://discord.gg/4DtjrRRU2F"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="hide-mobile">Discord</a>
+
+        <a
+          href="https://discord.gg/4DtjrRRU2F"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hide-mobile">
+          Discord
+        </a>
+
         <a href="#application" class="nav-cta">Apply Now ↗</a>
       </nav>
+
     </div>
   </header>
+
   <main>
+
     <!-- HERO -->
     <section class="hero">
       <div class="container">
+
         <div class="eyebrow">
           <span class="eyebrow-dot"></span>
           MEMBER APPLICATIONS
         </div>
+
         <h1>
           Your next adventure<br>
           starts at <span>The Lodge.</span>
         </h1>
+
         <p class="hero-description">
           We're looking for friendly players, creative builders, and
           content creators to become part of our Minecraft community.
           Whether you love exploring, building, creating machines, or
-          just hanging out with other players, there's a place for you here.
+          hanging out with other players, there's a place for you here.
         </p>
+
         <div class="hero-buttons">
           <a href="#application" class="button button-primary">
             Apply to Join the SMP ↗
           </a>
+
           <a href="/mods/" class="button button-secondary">
             Explore Our Modpack
           </a>
         </div>
+
       </div>
     </section>
-    <!-- WHAT TO EXPECT -->
+
+    <!-- COMMUNITY HIGHLIGHTS -->
     <section class="info-section">
       <div class="container">
+
         <div class="info-grid">
-          <div class="info-card">
-            <div class="info-icon">🌲</div>
+
+          <article class="info-card">
+            <div class="info-icon" aria-hidden="true">🌲</div>
             <div>
               <h3>A Cozy Community</h3>
               <p>
-                Meet other players, build something awesome, and make
-                The Lodge feel like home.
+                Meet other players, build something awesome, and help
+                make The Lodge feel like home.
               </p>
             </div>
-          </div>
-          <div class="info-card">
-            <div class="info-icon">🎮</div>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon" aria-hidden="true">🎮</div>
             <div>
               <h3>Creators Welcome</h3>
               <p>
@@ -487,101 +635,135 @@
                 Minecraft are all welcome to apply.
               </p>
             </div>
-          </div>
-          <div class="info-card">
-            <div class="info-icon">📝</div>
+          </article>
+
+          <article class="info-card">
+            <div class="info-icon" aria-hidden="true">📝</div>
             <div>
               <h3>Owner Reviewed</h3>
               <p>
-                Every application is reviewed by the server owner.
-                Applying does not guarantee acceptance.
+                Every application is reviewed personally by the server
+                owner. Applying does not guarantee acceptance.
               </p>
             </div>
-          </div>
+          </article>
+
         </div>
       </div>
     </section>
-    <!-- APPLICATION -->
+
+    <!-- APPLICATION FORM -->
     <section class="application-section" id="application">
       <div class="container">
+
         <div class="section-heading">
+
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            YOUR JOURNEY STARTS HERE
+          </div>
+
           <h2>Join The Lodge</h2>
+
           <p>
             Tell us a little about yourself. It only takes a few minutes.
           </p>
+
         </div>
+
         <div class="form-wrapper">
+
           <div class="form-top">
             <h3>The Lodge SMP — Member Application</h3>
+
             <p>
-              Please answer honestly. We want to get to know you!
+              Answer the questions honestly so we can get to know you.
             </p>
-            <div class="required-note">
-              * Some questions may be required.
+
+            <div class="form-badge">
+              <span></span>
+              Applications reviewed by the owner
             </div>
           </div>
-          <!--
-            GOOGLE FORM SETUP:
-            1. Create your Google Form.
-            2. Open the form and select Send or Publish.
-            3. Choose the <> Embed HTML option.
-            4. Copy the URL inside the iframe's src="...".
-            5. Replace the placeholder section below with the iframe
-               code shown in the instructions after this HTML.
-          -->
-          <div class="form-placeholder">
-            <div class="placeholder-icon">📋</div>
-            <h3>Ready to apply?</h3>
+
+          <!-- THE LODGE SMP GOOGLE FORM -->
+          <iframe
+            class="google-form"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSeAXozG_1HWbkxJUyB3RiCMF12TIP4J_9rNh5ovKfW4YFV52A/viewform?embedded=true"
+            title="The Lodge SMP Member Application"
+            width="100%"
+            height="1600"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0">
+            Loading The Lodge SMP application form…
+          </iframe>
+
+          <div class="form-bottom">
             <p>
-              Our application form will appear here once the Google Form
-              has been connected. Answer a few questions about yourself,
-              your Minecraft experience, and why you'd like to join.
+              Having trouble with the form?
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSeAXozG_1HWbkxJUyB3RiCMF12TIP4J_9rNh5ovKfW4YFV52A/viewform"
+                target="_blank"
+                rel="noopener noreferrer">
+                Open the application directly ↗
+              </a>
             </p>
-            <!-- REPLACE THIS BUTTON URL WITH YOUR GOOGLE FORM URL -->
-            <a
-              class="button button-primary"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfEGs0BGD-6j94itco0pIwkYwQXyu1OjoBEi958f_2CrxFa2A/viewform"
-              target="_blank"
-              rel="noopener noreferrer">
-              Open Application Form ↗
-            </a>
           </div>
+
         </div>
-        <div class="setup-note">
+
+        <div class="privacy-note">
           <strong>Before you apply</strong>
           Please make sure your Minecraft username is correct.
-          All applications are reviewed personally by the owner.
-          We value friendly, respectful players who want to be part
-          of the community. Submitting an application does not
-          guarantee acceptance.
+          All applications are reviewed personally by the server owner.
+          We value friendly, respectful players who want to be part of
+          the community. Submitting an application does not guarantee
+          acceptance.
         </div>
+
       </div>
     </section>
+
   </main>
+
   <!-- FOOTER -->
   <footer>
     <div class="container">
+
       <div class="footer-content">
+
         <div>
           <div class="footer-brand">THE LODGE SMP</div>
+
           <div class="footer-description">
             A place to build, explore, and belong.
           </div>
         </div>
-        <div class="footer-links">
+
+        <nav class="footer-links" aria-label="Footer navigation">
           <a href="/">Home</a>
           <a href="/mods/">Modpack</a>
-          <a href="https://discord.gg/4DtjrRRU2F"
-             target="_blank"
-             rel="noopener noreferrer">Discord</a>
+
+          <a
+            href="https://discord.gg/4DtjrRRU2F"
+            target="_blank"
+            rel="noopener noreferrer">
+            Discord
+          </a>
+
           <a href="#application">Apply</a>
-        </div>
+        </nav>
+
       </div>
+
       <div class="copyright">
         © 2026 The Lodge SMP. Minecraft is a trademark of Mojang Studios.
         The Lodge SMP is not affiliated with or endorsed by Mojang.
       </div>
+
     </div>
   </footer>
+
 </body>
 </html>
