@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,33 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#fcfbf7">
 
-  <title>The Lodge SMP</title>
-  <meta name="description" content="Build, explore, and create on The Lodge SMP, a cozy modded Minecraft survival community.">
+  <title>The Lodge SMP | Cozy Minecraft Survival</title>
+  <meta name="description" content="Build, explore, and create on The Lodge SMP, a cozy modded Minecraft survival community. Join our community today!">
 
-  <link rel="icon" type="image/png" href="assets/gallery/logo.png">
-  <link rel="apple-touch-icon" href="assets/gallery/logo.png">
+  <link rel="icon" type="image/png" href="/assets/gallery/logo.png">
+  <link rel="apple-touch-icon" href="/assets/gallery/logo.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      --background: #fcfbf7;
+      --surface: #ffffff;
+      --surface-soft: #f4f3ed;
+      --text: #252b25;
+      --muted: #72786f;
+      --green: #5e8461;
+      --green-dark: #426547;
+      --green-light: #e8eee5;
+      --border: #e8e7df;
+      --radius: 20px;
+      --shadow: 0 8px 30px rgba(35, 49, 34, 0.06);
     }
 
-    :root {
-      --bg-color: #fcfbf7;
-      --card-bg: #f4f3ed;
-      --text-dark: #0f0f0f;
-      --text-muted: #4a4a4a;
-      --text-subtle: #737373;
-      --green-accent: #5e8461;
-      --border-light: #e6e4dc;
-      --font-family: 'Plus Jakarta Sans', -apple-system,
-        BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    * {
+      box-sizing: border-box;
     }
 
     html {
@@ -39,924 +40,998 @@
     }
 
     body {
-      background-color: var(--bg-color);
-      color: var(--text-dark);
-      font-family: var(--font-family);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      padding: 24px 16px;
-      overflow-x: hidden;
+      margin: 0;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    a, button {
-      -webkit-tap-highlight-color: transparent;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid var(--green-accent);
-      outline-offset: 4px;
+    button {
+      font: inherit;
     }
 
-    .site-container {
-      max-width: 760px;
+    .container {
+      width: min(1120px, calc(100% - 36px));
       margin: 0 auto;
     }
 
     /* HEADER */
 
-    header {
-      background-color: var(--card-bg);
-      border-radius: 24px;
-      padding: 14px 20px;
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(252, 251, 247, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border: 1px solid var(--border-light);
-      margin-bottom: 36px;
-      animation: lodgeFadeDown 650ms ease-out both;
+      gap: 18px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
-    }
-
-    .brand-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      overflow: hidden;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -0.6px;
       flex-shrink: 0;
     }
 
-    .brand-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 300ms ease;
+    .brand img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      border-radius: 12px;
     }
 
-    .brand-icon:hover img {
-      transform: scale(1.09);
+    .brand small {
+      display: block;
+      font-size: 10px;
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      line-height: 1.3;
     }
 
-    .brand-titles {
+    .nav-links {
       display: flex;
-      flex-direction: column;
-    }
-
-    .brand-title {
-      font-weight: 800;
-      font-size: 1.05rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      line-height: 1.1;
-    }
-
-    .brand-subtitle {
+      align-items: center;
+      gap: 22px;
+      font-size: 13px;
       font-weight: 700;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      color: var(--text-subtle);
-      text-transform: uppercase;
-      margin-top: 2px;
+    }
+
+    .nav-links > a:not(.btn-discord-pill) {
+      color: #53594f;
+      transition: color 0.2s;
+    }
+
+    .nav-links > a:not(.btn-discord-pill):hover {
+      color: var(--green);
     }
 
     .btn-discord-pill {
-      background-color: #fff;
-      color: var(--text-dark);
-      border: 1px solid var(--border-light);
-      font-family: var(--font-family);
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 8px 18px;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: transform 220ms ease,
-                  box-shadow 220ms ease,
-                  background-color 220ms ease;
+      background: var(--green);
+      color: #fff;
+      border-radius: 999px;
+      padding: 10px 17px;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
     }
 
     .btn-discord-pill:hover {
-      background-color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+      background: var(--green-dark);
+      transform: translateY(-1px);
     }
 
     /* HERO */
 
     .hero {
-      margin-bottom: 32px;
-      animation: lodgeFadeUp 750ms 100ms ease-out both;
+      padding: 82px 0 64px;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
     }
 
-    .status-badge {
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      top: -220px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(
+        circle,
+        rgba(94, 132, 97, 0.12),
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-dark);
-      margin-bottom: 16px;
-    }
-
-    .status-dot {
-      width: 9px;
-      height: 9px;
-      background-color: var(--green-accent);
-      border-radius: 50%;
-      flex-shrink: 0;
-      animation: lodgePulse 2.8s ease-in-out infinite;
-    }
-
-    .main-heading {
+      padding: 7px 13px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      border-radius: 999px;
+      font-size: 11px;
       font-weight: 800;
-      font-size: 3.25rem;
-      line-height: 1.02;
-      letter-spacing: -0.04em;
+      letter-spacing: 1.1px;
       text-transform: uppercase;
-      color: var(--text-dark);
-      margin-bottom: 20px;
+      margin-bottom: 23px;
     }
 
-    .main-heading span.accent {
-      color: var(--green-accent);
-      display: block;
-      transition: color 250ms ease;
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
     }
 
-    .main-heading span.accent:hover {
-      color: #456c49;
+    h1 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.08;
+      letter-spacing: -4px;
+      font-weight: 800;
+    }
+
+    h1 span {
+      color: var(--green);
     }
 
     .hero-description {
-      font-size: 1.125rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      max-width: 640px;
-      line-height: 1.65;
-      margin-bottom: 28px;
+      max-width: 610px;
+      margin: 23px auto 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .btn-action {
-      font-family: var(--font-family);
-      font-weight: 700;
-      font-size: 0.95rem;
-      padding: 16px 24px;
-      border-radius: 18px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 220ms ease,
-                  box-shadow 220ms ease,
-                  background-color 220ms ease,
-                  border-color 220ms ease;
-      flex: 1;
-      max-width: 220px;
-      text-align: center;
-    }
-
-    .btn-copy {
-      background-color: #fff;
-      color: var(--text-dark);
-      border: 1px solid var(--border-light);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    }
-
-    .btn-discord {
-      background-color: var(--card-bg);
-      color: var(--text-dark);
-      border: 1px solid var(--border-light);
-    }
-
-    /* PLAYTIME LEADERBOARD */
-
-    .btn-leaderboard {
-      background-color: var(--green-accent);
-      color: #fff;
-      border: 1px solid var(--green-accent);
-      box-shadow: 0 5px 14px rgba(94, 132, 97, 0.18);
-    }
-
-    .btn-leaderboard:hover {
-      background-color: #4d7151;
-      border-color: #4d7151;
-    }
-
-    /* LIVE HUB */
-
-    .btn-live-hub {
-      background-color: #202a22;
-      color: #fff;
-      border: 1px solid #202a22;
-      box-shadow: 0 5px 14px rgba(32, 42, 34, 0.14);
-    }
-
-    .btn-live-hub:hover {
-      background-color: #385840;
-      border-color: #385840;
-    }
-
-    .btn-action:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(25, 35, 25, 0.09);
-    }
-
-    .btn-action:active,
-    .btn-discord-pill:active {
-      transform: translateY(0) scale(0.98);
-    }
-
-    .btn-early-access {
-      background-color: var(--green-accent);
-      color: #fff;
-      border: 1px solid var(--green-accent);
-      box-shadow: 0 5px 14px rgba(94, 132, 97, 0.18);
-    }
-
-    .btn-early-access:hover {
-      background-color: #4d7151;
-      border-color: #4d7151;
-    }
-
-    .early-access-note {
-      font-size: 0.76rem;
-      color: var(--text-subtle);
-      margin-top: -8px;
-      margin-bottom: 32px;
-    }
-
-    /* SERVER STATUS */
-
-    .server-status-card {
-      background-color: var(--card-bg);
-      border-radius: 20px;
-      padding: 16px 20px;
+    .server-card {
+      width: min(470px, 100%);
+      margin: 30px auto 0;
+      padding: 15px 18px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: var(--surface);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border: 1px solid var(--border-light);
-      margin-bottom: 24px;
-      transition: transform 250ms ease,
-                  box-shadow 250ms ease;
-      animation: lodgeFadeUp 750ms 220ms ease-out both;
-    }
-
-    .server-status-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.035);
-    }
-
-    .ip-info {
-      display: flex;
-      align-items: center;
       gap: 14px;
+      text-align: left;
+      box-shadow: var(--shadow);
     }
 
-    .ip-icon {
-      width: 28px;
-      height: 28px;
+    .server-label {
+      display: block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .server-address {
+      font-size: 15px;
+      font-weight: 800;
+      overflow-wrap: anywhere;
+    }
+
+    .server-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      flex-shrink: 0;
+      background: #f0efe9;
+      color: #666b61;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .status-dot {
+      height: 7px;
+      width: 7px;
       border-radius: 50%;
-      border: 2px solid var(--text-dark);
+      background: #9b9d91;
+    }
+
+    /* BUTTONS */
+
+    .hero-actions {
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
     }
 
-    .ip-icon-inner {
-      width: 8px;
-      height: 8px;
-      background-color: var(--text-dark);
-      border-radius: 50%;
-    }
-
-    .ip-details {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .ip-label {
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      color: var(--text-subtle);
-      text-transform: uppercase;
-    }
-
-    .ip-address {
-      font-weight: 800;
-      font-size: 1.15rem;
-      color: var(--text-dark);
-    }
-
-    .badge-offline {
-      background-color: #f6e3e3;
-      color: #923a3a;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      padding: 6px 14px;
+    .btn-action {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      min-height: 47px;
+      padding: 12px 19px;
       border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 18px rgba(35, 49, 34, 0.09);
+    }
+
+    .btn-discord {
+      color: white;
+      background: var(--green);
+      border-color: var(--green);
+    }
+
+    .btn-discord:hover {
+      background: var(--green-dark);
+    }
+
+    .btn-apply {
+      color: white;
+      background: #303b30;
+      border-color: #303b30;
+    }
+
+    .btn-apply:hover {
+      background: #1f291f;
+    }
+
+    .btn-live {
+      color: var(--green-dark);
+      background: var(--green-light);
+      border-color: #dce7d8;
+    }
+
+    .btn-live:hover {
+      background: #dce8d8;
+    }
+
+    .btn-leaderboard {
+      background: var(--surface);
+    }
+
+    .btn-early-access {
+      background: var(--surface);
+    }
+
+    .btn-copy {
+      border: 0;
+      background: var(--green-light);
+      color: var(--green-dark);
+      min-height: 39px;
+      padding: 9px 13px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .hero-note {
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* SECTION SHARED */
+
+    .section {
+      padding: 48px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 30px;
+    }
+
+    .section-kicker {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 38px);
+      line-height: 1.25;
+      letter-spacing: -1.4px;
+    }
+
+    .section-description {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* FEATURES */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: var(--green-light);
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: -0.4px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* COMMUNITY */
+
+    .community-panel {
+      background: #eef1e8;
+      border: 1px solid #e1e7da;
+      border-radius: 24px;
+      padding: 42px 25px;
+      text-align: center;
+    }
+
+    .community-panel p {
+      max-width: 560px;
+      margin: 14px auto 23px;
+      color: #646e60;
+      font-size: 14px;
+      line-height: 1.9;
     }
 
     /* RECENT PLAYERS */
 
-    .recent-players {
-      background-color: #180d10;
-      border: 3px solid #35151f;
-      border-radius: 24px;
-      padding: 24px;
-      margin-bottom: 48px;
-      color: #f7f1e9;
-      animation: lodgeFadeUp 750ms 320ms ease-out both;
-      transition: box-shadow 250ms ease,
-                  transform 250ms ease;
+    .players-section {
+      padding-bottom: 65px;
     }
 
-    .recent-players:hover {
-      box-shadow: 0 12px 28px rgba(24, 13, 16, 0.09);
-    }
-
-    .recent-players h2 {
-      font-size: 1.35rem;
-      font-weight: 800;
-      letter-spacing: 0.035em;
-      margin-bottom: 22px;
-      text-transform: uppercase;
-    }
-
-    .player-list {
+    .players-grid {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .player-skin {
-      aspect-ratio: 1;
+    .player-card {
       min-width: 0;
-      border-radius: 22%;
-      overflow: hidden;
-      border: 3px solid #35151f;
-      background-color: #24161b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 250ms ease,
-                  border-color 250ms ease,
-                  box-shadow 250ms ease;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 12px;
+      text-align: center;
     }
 
-    .player-skin img {
+    .player-skin {
       display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: 76px;
+      height: 76px;
+      margin: 0 auto;
+      object-fit: contain;
       image-rendering: pixelated;
-      transition: transform 250ms ease;
-    }
-
-    .player-skin:hover {
-      transform: translateY(-4px) scale(1.035);
-      border-color: #789778;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
-    }
-
-    .player-skin:hover img {
-      transform: scale(1.04);
     }
 
     .player-placeholder {
-      color: #b9a9ae;
-      font-size: 0.7rem;
-      text-align: center;
-      padding: 5px;
-    }
-
-    .player-note {
-      color: #b9a9ae;
-      font-size: 0.76rem;
-      margin-top: 16px;
-    }
-
-    /* CONTENT SECTIONS */
-
-    .details-section {
-      border-top: 1px solid var(--border-light);
-      padding-top: 36px;
-    }
-
-    .detail-group {
-      margin-bottom: 28px;
-    }
-
-    .section-label {
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-      color: var(--text-subtle);
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .detail-heading {
-      font-weight: 800;
-      font-size: 1.6rem;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-    }
-
-    .section-title-large {
-      font-weight: 800;
-      font-size: 2.5rem;
-      line-height: 1.12;
-      letter-spacing: -0.04em;
-      margin-bottom: 20px;
-    }
-
-    .link-explore {
-      display: inline-flex;
+      width: 76px;
+      height: 76px;
+      margin: 0 auto;
+      display: flex;
       align-items: center;
-      gap: 6px;
-      font-weight: 800;
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      text-decoration: none;
+      justify-content: center;
+      background: var(--surface-soft);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 28px;
+    }
+
+    .player-name {
       margin-top: 12px;
-      transition: gap 220ms ease,
-                  color 220ms ease;
+      font-size: 12px;
+      font-weight: 800;
+      overflow-wrap: anywhere;
     }
 
-    .link-explore:hover {
-      gap: 12px;
-      color: var(--green-accent);
+    .players-loading {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 20px;
     }
 
-    /* SCROLL REVEALS */
+    /* FOOTER */
 
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 650ms ease,
-                  transform 650ms ease;
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
     }
 
-    .reveal-on-scroll.is-visible {
-      opacity: 1;
-      transform: translateY(0);
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
     }
 
-    /* ANIMATIONS */
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 800;
+    }
 
-    @keyframes lodgeFadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
+    .footer-copy {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 3px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--green);
+    }
+
+    @media (max-width: 800px) {
+      .nav {
+        min-height: 68px;
       }
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links > a:not(.btn-discord-pill) {
+        display: none;
+      }
+
+      .hero {
+        padding: 62px 0 46px;
+      }
+
+      h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: 22px;
+      }
+
+      .players-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
-    @keyframes lodgeFadeDown {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes lodgePulse {
-      0%, 100% {
-        box-shadow: 0 0 0 0 rgba(94, 132, 97, 0);
-      }
-
-      50% {
-        box-shadow: 0 0 0 5px rgba(94, 132, 97, 0.13);
-      }
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 600px) {
-      body {
-        padding: 16px 12px;
-      }
-
-      header {
-        border-radius: 20px;
-        padding: 12px 14px;
-        margin-bottom: 30px;
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 26px, 1120px);
       }
 
       .brand {
-        gap: 10px;
+        gap: 8px;
+        font-size: 14px;
       }
 
-      .brand-icon {
+      .brand img {
         width: 38px;
         height: 38px;
       }
 
       .btn-discord-pill {
-        padding: 8px 14px;
+        padding: 9px 12px;
+        font-size: 11px;
       }
 
-      .main-heading {
-        font-size: 2.35rem;
+      .hero {
+        padding-top: 48px;
+      }
+
+      h1 {
+        font-size: 43px;
+        letter-spacing: -2.5px;
       }
 
       .hero-description {
-        font-size: 1rem;
+        font-size: 14px;
       }
 
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .btn-action {
-        max-width: 100%;
-        width: 100%;
-      }
-
-      .server-status-card {
-        gap: 12px;
-        padding: 14px;
-      }
-
-      .ip-info {
-        gap: 10px;
-      }
-
-      .ip-address {
-        font-size: 1rem;
-      }
-
-      .badge-offline {
-        padding: 6px 10px;
-        font-size: 0.65rem;
-      }
-
-      .recent-players {
-        padding: 18px;
-        border-radius: 21px;
-      }
-
-      .recent-players h2 {
-        font-size: 1.1rem;
-        margin-bottom: 18px;
-      }
-
-      .player-list {
+      .server-card {
+        padding: 13px;
         gap: 8px;
       }
 
-      .player-skin {
-        border-width: 2px;
-        border-radius: 18%;
+      .server-address {
+        font-size: 13px;
       }
 
-      .section-title-large {
-        font-size: 2rem;
+      .server-status {
+        font-size: 10px;
+        padding: 6px 8px;
       }
 
-      .detail-heading {
-        font-size: 1.4rem;
+      .hero-actions {
+        gap: 9px;
+      }
+
+      .btn-action {
+        min-height: 44px;
+        padding: 11px 13px;
+        font-size: 12px;
+      }
+
+      .section {
+        padding: 36px 0;
+      }
+
+      .players-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .community-panel {
+        padding: 32px 18px;
+      }
+
+      .footer-content {
+        align-items: flex-start;
+        flex-direction: column;
       }
     }
 
-    /* ACCESSIBILITY */
-
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
       *,
       *::before,
       *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-
-      .reveal-on-scroll {
-        opacity: 1;
-        transform: none;
+        scroll-behavior: auto !important;
+        transition: none !important;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="site-container">
 
-    <header>
-      <div class="brand">
-        <div class="brand-icon">
-          <img src="assets/gallery/logo.png" alt="The Lodge SMP Logo">
-        </div>
+  <header class="site-header">
+    <div class="container nav">
 
-        <div class="brand-titles">
-          <div class="brand-title">The Lodge</div>
-          <div class="brand-subtitle">SMP</div>
-        </div>
-      </div>
-
-      <a href="https://discord.gg/4DtjrRRU2F"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="btn-discord-pill">
-        Discord
+      <a class="brand" href="/" aria-label="The Lodge SMP homepage">
+        <img
+          src="/assets/gallery/logo.png"
+          alt="The Lodge SMP logo"
+          onerror="this.style.display='none'"
+        >
+        <span>
+          The Lodge SMP
+          <small>Find your place</small>
+        </span>
       </a>
-    </header>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="/mods/">Modpack</a>
+        <a href="/leaderboard/">Leaderboard</a>
+        <a class="btn-discord-pill"
+           href="https://discord.gg/4DtjrRRU2F"
+           target="_blank"
+           rel="noopener noreferrer">
+          Join Discord
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
 
     <section class="hero">
-      <div class="status-badge">
-        <span class="status-dot"></span>
-        Modded Survival • Java
+      <div class="container hero-content">
+
+        <div class="eyebrow">
+          <span class="eyebrow-dot"></span>
+          Cozy Modded Survival
+        </div>
+
+        <h1>
+          Your next adventure<br>
+          starts at <span>The Lodge.</span>
+        </h1>
+
+        <p class="hero-description">
+          A cozy Minecraft survival community built around exploration,
+          creativity, and making memories. Discover new wildlife, build
+          incredible creations, and find your place around the Lodge.
+        </p>
+
+        <div class="server-card">
+          <div>
+            <span class="server-label">Minecraft Server IP</span>
+            <div class="server-address" id="server-ip">lodgesmp.net</div>
+          </div>
+
+          <button
+            class="btn-copy"
+            id="copy-ip"
+            type="button">
+            Copy IP
+          </button>
+        </div>
+
+        <!-- BOTH APPLY HERE AND LIVE HUB ARE INCLUDED -->
+
+        <div class="hero-actions">
+
+          <a
+            href="https://discord.gg/4DtjrRRU2F"
+            class="btn-action btn-discord"
+            target="_blank"
+            rel="noopener noreferrer">
+            Join Discord
+          </a>
+
+          <a
+            href="/apply/"
+            class="btn-action btn-apply">
+            📝 Apply Here
+          </a>
+
+          <a
+            href="https://live.lodgesmp.net"
+            class="btn-action btn-live"
+            target="_blank"
+            rel="noopener noreferrer">
+            📡 Live Hub
+          </a>
+
+          <a
+            href="/leaderboard/"
+            class="btn-action btn-leaderboard">
+            🏆 Leaderboard
+          </a>
+
+          <a
+            href="/mods/"
+            class="btn-action btn-early-access">
+            🌿 Get the Modpack
+          </a>
+
+        </div>
+
+        <p class="hero-note">
+          Minecraft 1.21.1 · NeoForge · Cozy Vanilla+ Survival
+        </p>
+
       </div>
-
-      <h1 class="main-heading">
-        Welcome to<br>
-        <span class="accent">The Lodge</span>
-        SMP
-      </h1>
-
-      <p class="hero-description">
-        Build. Explore. Create. Settle in and make the world your own
-        on a community-focused Minecraft survival server.
-      </p>
-
-      <div class="hero-actions">
-        <button class="btn-action btn-copy" id="copy-ip" type="button">
-          Copy Server IP
-        </button>
-
-        <a href="https://discord.gg/4DtjrRRU2F"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="btn-action btn-discord">
-          Join the Discord
-        </a>
-
-        <a href="/playtime/"
-           class="btn-action btn-leaderboard">
-          🏆 Playtime Leaderboard
-        </a>
-
-        <a href="https://live.lodgesmp.net"
-           class="btn-action btn-live-hub">
-          📡 Live Hub
-        </a>
-      </div>
-
-      <div class="hero-actions">
-        <a href="/download/"
-           class="btn-action btn-early-access"
-           style="max-width:100%;width:100%;">
-          Get Early Access to the Modpack &rarr;
-        </a>
-      </div>
-
-      <p class="early-access-note">
-        Minecraft 1.21.1 · NeoForge · Early Access Test Build
-      </p>
     </section>
 
-    <div class="server-status-card">
-      <div class="ip-info">
-        <div class="ip-icon">
-          <div class="ip-icon-inner"></div>
+    <!-- FEATURES -->
+
+    <section class="section" id="features">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="section-kicker">Welcome to the Lodge</span>
+          <h2>A little more than vanilla.</h2>
+          <p class="section-description">
+            Familiar Minecraft survival, with extra things to discover.
+          </p>
         </div>
 
-        <div class="ip-details">
-          <span class="ip-label">Server IP</span>
-          <span class="ip-address">lodgesmp.net</span>
+        <div class="features-grid">
+
+          <article class="feature-card">
+            <div class="feature-icon">🌲</div>
+            <h3>Build Your Home</h3>
+            <p>
+              Settle down, gather resources, build your dream base,
+              and create your own corner of the world.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">⚙️</div>
+            <h3>Create Something Amazing</h3>
+            <p>
+              Experiment with Create machinery, automate your
+              projects, and bring ambitious builds to life.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🐾</div>
+            <h3>Explore the Wildlife</h3>
+            <p>
+              Discover new animals, explore the world, and make
+              every adventure a little more interesting.
+            </p>
+          </article>
+
         </div>
       </div>
+    </section>
 
-      <span class="badge-offline">Offline</span>
-    </div>
+    <!-- COMMUNITY -->
+
+    <section class="section">
+      <div class="container">
+
+        <div class="community-panel">
+          <span class="section-kicker">Your place in the community</span>
+
+          <h2>There's room around the campfire.</h2>
+
+          <p>
+            Whether you're a builder, explorer, redstone enthusiast,
+            or just looking for a friendly place to play, The Lodge
+            is a place to make your own memories.
+          </p>
+
+          <div class="hero-actions">
+
+            <a
+              href="/apply/"
+              class="btn-action btn-apply">
+              📝 Apply Here
+            </a>
+
+            <a
+              href="https://discord.gg/4DtjrRRU2F"
+              class="btn-action btn-discord"
+              target="_blank"
+              rel="noopener noreferrer">
+              Join Our Discord
+            </a>
+
+            <a
+              href="https://live.lodgesmp.net"
+              class="btn-action btn-live"
+              target="_blank"
+              rel="noopener noreferrer">
+              📡 Visit Live Hub
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- RECENT PLAYERS -->
 
-    <section class="recent-players">
-      <h2>Recent Players</h2>
+    <section class="section players-section" id="players">
+      <div class="container">
 
-      <div class="player-list" id="player-list">
-        <div class="player-skin">
-          <span class="player-placeholder">—</span>
+        <div class="section-heading">
+          <span class="section-kicker">The community</span>
+          <h2>Recent adventurers</h2>
+          <p class="section-description">
+            Meet some of the players who have visited The Lodge.
+          </p>
         </div>
-        <div class="player-skin">
-          <span class="player-placeholder">—</span>
+
+        <div id="recent-players" class="players-grid">
+          <div class="players-loading">
+            Loading recent players...
+          </div>
         </div>
-        <div class="player-skin">
-          <span class="player-placeholder">—</span>
-        </div>
-        <div class="player-skin">
-          <span class="player-placeholder">—</span>
-        </div>
-        <div class="player-skin">
-          <span class="player-placeholder">—</span>
-        </div>
+
       </div>
-
-      <p class="player-note" id="player-note">
-        The Lodge SMP community
-      </p>
     </section>
 
-    <!-- SERVER DETAILS -->
+  </main>
 
-    <section class="details-section">
+  <!-- FOOTER -->
 
-      <div class="detail-group">
-        <div class="section-label">Edition</div>
-        <div class="detail-heading">Java</div>
+  <footer>
+    <div class="container footer-content">
+
+      <div>
+        <div class="footer-brand">The Lodge SMP</div>
+        <div class="footer-copy">
+          Built for adventures, friendships, and good times.
+        </div>
       </div>
 
-      <div class="detail-group">
-        <div class="section-label">Server Style</div>
-        <div class="detail-heading">Modded Survival</div>
+      <div class="footer-links">
+        <a href="/apply/">Apply Here</a>
+        <a href="https://live.lodgesmp.net"
+           target="_blank"
+           rel="noopener noreferrer">Live Hub</a>
+        <a href="/mods/">Modpack</a>
+        <a href="/leaderboard/">Leaderboard</a>
+        <a href="https://discord.gg/4DtjrRRU2F"
+           target="_blank"
+           rel="noopener noreferrer">Discord</a>
       </div>
 
-      <div class="detail-group" style="margin-top:40px;">
-        <div class="section-label">The Lodge SMP</div>
-
-        <h2 class="section-title-large">
-          A survival server that still feels like Minecraft.
-        </h2>
-
-        <p class="hero-description">
-          The Lodge is built around a simple idea: add cool things
-          without forcing every player to learn a completely different game.
-        </p>
-
-        <p class="hero-description">
-          Explore, build, automate, decorate, trade, and make your own
-          place in the world. The modpack adds depth while keeping the
-          familiar Minecraft survival loop at the center.
-        </p>
-
-        <a href="/mods/" class="link-explore">
-          Explore the features &rarr;
-        </a>
-      </div>
-
-    </section>
-
-  </div>
+    </div>
+  </footer>
 
   <script>
-    // Copy the server IP.
-    document.getElementById("copy-ip").addEventListener("click", async () => {
+    // COPY SERVER IP
+
+    const copyButton = document.getElementById("copy-ip");
+    const serverIp = document.getElementById("server-ip");
+
+    copyButton.addEventListener("click", async function () {
+      const originalText = copyButton.textContent;
+
       try {
-        await navigator.clipboard.writeText("lodgesmp.net");
+        await navigator.clipboard.writeText(serverIp.textContent.trim());
+        copyButton.textContent = "Copied!";
+      } catch (error) {
+        const textArea = document.createElement("textarea");
+        textArea.value = serverIp.textContent.trim();
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
 
-        const button = document.getElementById("copy-ip");
-        const originalText = button.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
 
-        button.textContent = "IP Copied!";
+        const successful = document.execCommand("copy");
+        textArea.remove();
 
-        setTimeout(() => {
-          button.textContent = originalText;
-        }, 1800);
-
-      } catch {
-        prompt("Copy the server IP:", "lodgesmp.net");
+        copyButton.textContent = successful ? "Copied!" : "Copy failed";
       }
+
+      setTimeout(function () {
+        copyButton.textContent = originalText;
+      }, 1800);
     });
 
-    // Reveal the lower content as visitors scroll.
-    const revealElements = document.querySelectorAll(
-      ".details-section .detail-group"
-    );
 
-    if ("IntersectionObserver" in window) {
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.12
-      });
-
-      revealElements.forEach(element => {
-        element.classList.add("reveal-on-scroll");
-        revealObserver.observe(element);
-      });
-    } else {
-      revealElements.forEach(element => {
-        element.classList.add("is-visible");
-      });
-    }
-
-    /*
-      RECENT PLAYERS INTEGRATION
-
-      This section expects a /recent-players.json file
-      generated from your Minecraft server data.
-
-      Example format:
-      {
-        "players": [
-          { "uuid": "player-uuid-here" }
-        ]
-      }
-
-      GitHub Pages cannot read Pixly server files directly.
-    */
+    // RECENT MINECRAFT PLAYERS
+    //
+    // Optional data file:
+    // /data/recent-players.json
+    //
+    // Expected format:
+    // [
+    //   {"name": "PlayerName", "uuid": "player-uuid"},
+    //   {"name": "AnotherPlayer", "uuid": "another-player-uuid"}
+    // ]
 
     async function loadRecentPlayers() {
-      const list = document.getElementById("player-list");
-      const note = document.getElementById("player-note");
+      const container = document.getElementById("recent-players");
 
       try {
-        const response = await fetch("/recent-players.json", {
+        const response = await fetch("/data/recent-players.json", {
           cache: "no-store"
         });
 
         if (!response.ok) {
-          throw new Error("Recent player data unavailable.");
+          throw new Error("Recent players data is not available.");
         }
 
-        const data = await response.json();
+        const players = await response.json();
 
-        const players = Array.isArray(data.players)
-          ? data.players
-              .filter(player =>
-                player &&
-                typeof player.uuid === "string" &&
-                /^[a-fA-F0-9-]{32,36}$/.test(player.uuid)
-              )
-              .slice(0, 5)
-          : [];
-
-        if (players.length === 0) {
-          throw new Error("No recent player records.");
+        if (!Array.isArray(players) || players.length === 0) {
+          container.innerHTML =
+            '<div class="players-loading">Be one of the first adventurers at The Lodge!</div>';
+          return;
         }
 
-        list.replaceChildren();
+        container.replaceChildren();
 
-        players.forEach(player => {
+        players.slice(0, 5).forEach(function (player) {
           const card = document.createElement("div");
-          card.className = "player-skin";
+          card.className = "player-card";
 
-          const img = document.createElement("img");
-          img.alt = "Minecraft player skin";
-          img.loading = "lazy";
-          img.decoding = "async";
-          img.src =
-            "https://mc-heads.net/avatar/" +
-            encodeURIComponent(player.uuid) +
-            "/128";
+          const image = document.createElement("img");
+          image.className = "player-skin";
+          image.alt = "";
+          image.loading = "lazy";
+          image.src = player.uuid
+            ? "https://crafatar.com/renders/body/" +
+              encodeURIComponent(player.uuid) +
+              "?overlay"
+            : "https://mc-heads.net/avatar/" +
+              encodeURIComponent(player.name) +
+              "/100";
 
-          img.onerror = () => {
-            img.remove();
+          image.onerror = function () {
+            image.onerror = null;
+            image.src =
+              "https://mc-heads.net/avatar/" +
+              encodeURIComponent(player.name) +
+              "/100";
           };
 
-          card.appendChild(img);
-          list.appendChild(card);
+          const name = document.createElement("div");
+          name.className = "player-name";
+          name.textContent = player.name || "Adventurer";
+
+          card.appendChild(image);
+          card.appendChild(name);
+          container.appendChild(card);
         });
 
-        while (list.children.length < 5) {
-          const placeholder = document.createElement("div");
-          placeholder.className = "player-skin";
-          list.appendChild(placeholder);
-        }
-
-        note.textContent = "The Lodge SMP community";
-
       } catch (error) {
-        // Keep the default placeholders until player data is available.
-        note.textContent = "The Lodge SMP community";
+        container.innerHTML =
+          '<div class="players-loading">Your next adventure could be here.</div>';
       }
     }
 
     loadRecentPlayers();
   </script>
+
 </body>
 </html>
